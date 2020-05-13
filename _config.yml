@@ -94,7 +94,7 @@ analytics:
 # Site Author
 author:
   name             : "KJ"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/forever_learning.jpg"
   bio              : "Just another NPC"
   location         : "The Aether"
   email            :
