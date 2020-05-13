@@ -18,7 +18,7 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 locale                   : "en-AU"
 title                    : "My Blog"
 title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
+subtitle                 : "This blog contains random Cyber notes and CTF writeups for: Machines that I found interesting and that friends have created"
 name                     : "KJ"
 description              : "An amazing blog."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
