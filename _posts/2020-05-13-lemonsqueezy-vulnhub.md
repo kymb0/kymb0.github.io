@@ -18,7 +18,7 @@ tags:
 
 
 
-My study partner and former colleague recently created an OSCP-like machine for Vulnhub, as my machine Stripes already has a writeup available, I felt his machine must be a bit lonely so I decided to be the first one to draw blood and create this writeup.
+My study partner and former colleague recently created an OSCP-like machine for Vulnhub, as my machine Stripes already has a writeup available I felt his machine may be a bit lonely so I decided to be the first one to draw blood and create this writeup.
 
 You can download the machine from vulhub: https://www.vulnhub.com/entry/lemonsqueezy-1,473/
 
@@ -98,6 +98,7 @@ I upgraded my shell because I am both lazy and fancy
    
         python3 -c 'import pty; pty.spawn("/bin/bash")'
         Ctrl-Z
+	
    In Kali terminal:
    
         stty -a
@@ -105,7 +106,7 @@ I upgraded my shell because I am both lazy and fancy
         fg
         stty rows 20
 	
-Ta-da, now I have hand features such as autocomplete, access to bash history etc.
+Ta-da, now I have handy features such as autocomplete, access to bash history etc.
 One of the first things I do with a www-data shell is go straight to /var/www/ and snoop around for additional web apps and credentials,
 I was surprised to see user.txt in there, I did not think I would be able to read yet, however I was able to grab the flag - I suspect this means that we will 
 either be pivoting straight to root or be able to read root flag as lemon/orange
