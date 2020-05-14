@@ -21,7 +21,7 @@ tags:
 My study partner and former colleague recently created an OSCP-like machine for Vulnhub, as my machine Stripes already has a writeup available I felt his machine may be a bit lonely so I decided to be the first one to draw blood and create this writeup.
 I would rate this box as easy with a couple of curveballs but overall pretty straightforward and absolutely perfect for beginners to sink their teeth into.
 
-You can download the machine from vulhub: [[https://www.vulnhub.com/entry/lemonsqueezy-1,473/]]
+You can download the machine from vulhub <a href="https://www.vulnhub.com/entry/lemonsqueezy-1,473/">Here</a>
 
 ## Summary 
 
