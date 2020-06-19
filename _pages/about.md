@@ -19,7 +19,9 @@ My goal is to help, teach, and/or inspire anyone else wanting to obtain hard cyb
 
 ## ~# id
 [HackTheBox](https://www.hackthebox.eu/profile/140922)
+
 [Github](https://github.com/RawrRadioMouse/)
+
 [Linkedin](https://www.linkedin.com/in/k-jagdmann-2658a771/)
 
 
