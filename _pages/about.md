@@ -18,9 +18,9 @@ My next large target is the [OSCE](https://www.offensive-security.com/ctp-osce/)
 My goal is to help, teach, and/or inspire anyone else wanting to obtain hard cyber skills with no previous knowledge or exposure or connections.
 
 ## ~# id
-HackTheBox[https://www.hackthebox.eu/profile/140922)
-Github[https://github.com/RawrRadioMouse/)
-Linkedin[https://www.linkedin.com/in/k-jagdmann-2658a771/)
+[HackTheBox](https://www.hackthebox.eu/profile/140922)
+[Github](https://github.com/RawrRadioMouse/)
+[Linkedin](https://www.linkedin.com/in/k-jagdmann-2658a771/)
 
 
 
