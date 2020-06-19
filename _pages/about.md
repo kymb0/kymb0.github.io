@@ -11,7 +11,7 @@ I was immediately addicted to thrill of learning, and 12 months later obtained a
 
 Shortly after I was exposed to the Australian infosec community, and was blown away by how open, helpful, and friendly they were as a whole compared to the culture of IT support "professionals".
 
-I decided that regardless of whether or not I were to gain employment in this ever changing, ever *humbling* environment, that would continue to study it in all it's aspects.
+I decided that regardless of whether or not I were to gain employment in this ever changing, ever *humbling* environment, that I would continue to study it in all it's aspects.
 
 My next large target is the [OSCE](https://www.offensive-security.com/ctp-osce/), in order to prepare for this I have decided to pursue [SLAE32](https://www.pentesteracademy.com/course?id=3).
 
