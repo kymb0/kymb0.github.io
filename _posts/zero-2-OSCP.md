@@ -1,0 +1,32 @@
+## Zero to OSCP in 12 months
+
+I am sure by now we are all rolling our eyes at **_aNOtheR_** OSCP journey blog - so I will keep this as short and as practical as I can.
+If you would like a brief primer on how I came to pursue this, simply click that **about_me** button up there in the top right.
+
+There are many accounts of people doing their 15-30 days in the labs and then blitzing the exam in one go - I was most certainly not one of those people.
+In fact I did not pass on my second, third or even fourth go.
+
+For me getting the OSCP was a near year-long struggle, one that changed the way I think, study and work forever.
+
+TL;DR:
+
+Started with no knowlegde of linux or pentesting (PRE revised labs, but with updated exam)
+  * started from the beggining of [Penetration Testing: A Hands-On Introduction to Hacking](https://www.amazon.com.au/Penetration-Testing-Hands-Introduction-Hacking-ebook/dp/B00KME7GN8) and made sure I understood each and every single command and concept otherthan the wireless and mobile attacks. The BoF section took me an inordinate amount of time, I have never really done any formal training so the concept of the stack completely threw me and to be honest, nearly made me give up. I am very glad I did not.
+  *Many, MANY phonecalls and messages were made to my very patient and big brain mate who had lent me the book, without him, I still may be going through it to this day xD*
+  * Started downloading machines from [VulnHub](vulnhub.com)(I have since submitted my [own boot2root](https://www.vulnhub.com/entry/stripes-1,468/)) and working through them with the assistance of multiple walkthroughs, to further expose me to new tools and techniques as well as give me more hours in linux (what do you MEAN dpkg is locked????)
+  * As I was doing this, my friend had decided he would bite the bullet and sign up to PWK. I thought, "yeah! I can do this" and signed up too with 90 days
+  * While I waited for my lab time to start, I continued with vulnhub and read as many OSCP articles and reviews as I could
+  * Labtime started and I started enumerating and probing. I made a critical error at this point, and that was relying too much on student forums as well as launching Kernal Exploits at everything (looking at you, ["dirty cow!"](https://en.wikipedia.org/wiki/Dirty_COW))
+  * I think I had roughly 30 out of 50 possible owns at 2 months in and thought - "I've got this EZ"
+  * Turns out I was incorrect, and got crushed by my first exam attempt
+  * Signed up to [https://www.hackthebox.eu](HackTheBox) and started knocking off retired machines from the [OSCP like boxes](https://www.reddit.com/r/oscp/comments/alf4nf/oscp_like_boxes_on_hack_the_box_credit_tj_null_on/) list from TJ_Null
+  * Had second attempt, failed. Kept going with HackTheBox, and signed up for a Python course on udemy to further my programming skills
+  * Third attempt and was close, but failed again - was beggining to get exhausted. Started running through [DVWA](http://www.dvwa.co.uk) exercises to upskill web knowledge, also started attacking more Active boxes on HackTheBox (this is an important point as even though the principals are the same, there is a huge difference in what is required to pass the exam boxes as opposed to owning active HTB machines)
+  * Fourth attempt, had some very difficult boxes, got low priv on most but could not escalate, points not as high as previous attempt due to not doing the BoF, told myself that my fifth attempt would be my last for at least a year.
+  * around 3 months later I had my 5th (and in my mind final) attempt coming up, however I decided to delay by another month or so, as I felt I needed to do something different this time, and that, as ridiculously obvious as this sounds, was to actually PREPARE!!! I read through my armada of notes I had collected, as well as run through a list of vulnhub and HackTheBox machines over the course of two weeks leading into my exam. Whereas previously, I had taken some time off prior to the exam date.
+  * 8 hours or so in I had owned enough boxes to get the passing mark. I then re-owned them, taking meticulous screenshots and documenting EVERYTHING. I made sure that I started filling in this handy [Exam Template](https://github.com/whoisflynn/OSCP-Exam-Report-Template/blob/master/OSCP-OS-XXXXX-Exam-Report_Template3.2.docx) while my vpn connection was still active - if I had not done this I may not have had enough info to complete the report.
+  * A few days later I was working in the sun when I got a notification on my phone - an email from Offensive Security :O, my heart raced as I waited for my phone to unlock and load up gmail... I passed!!!
+
+So, for anyone struggling hrough multiple failures:
+
+Keep going! Keep reading books and articles, learn new attacks (not TOO advanced), sign up to short courses on programming, download some easy vulnhub machines and see how fast you can own them.
