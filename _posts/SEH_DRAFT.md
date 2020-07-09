@@ -76,7 +76,7 @@ Now that we know the offset, we confirm control by crashing with another simple 
 
 Proof of control: 
 
-![SEH_control](/assets/images/seh/SEH_control.jpg)
+![SEH_control](/assets/images/seh/SEH_control.JPG)
 
 
 
