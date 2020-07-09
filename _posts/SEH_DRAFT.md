@@ -17,7 +17,7 @@ tags:
   - osce
   - assembly
 ---
-# THIS IS A DRAFT
+
 ## A primer on Structured Exception Handling (win32 exploitation)
 
 *This article is written to help those who want a conceptual grasp on SEH exploits, I wrote this to help myself obtain a clear understanding before my CP course starts.*
@@ -49,7 +49,7 @@ Remember that the SEH is located at esp+8 so if we increment the stack with 8-by
 
 EG a program crashes, registers get zeroed and SP +8 is overwritten with crash string eg 41414141
 
-[!SEH_overwrite](/assets/images/seh/SEH_overwrite.jpg)
+![SEH_overwrite](/assets/images/seh/SEH_overwrite.jpg)
 
 When an exception occurs and the Exception Handler (SEH) is called, it’s value is put in EIP. Since we have control over SEH, we now have control over EIP and the execution flow of the application. 
 We also know that the EstablisherFrame (which starts with Next SEH) is located at ESP+8, so if we can load that value into EIP we can continue to control the execution flow of the application.
@@ -65,18 +65,19 @@ First, we crash the application with a pattern attack string to locate the offse
 
 As below we see SEH overwritten and offset located:
 
-[!SEH_crash](/assets/images/seh/SEH_crash.jpg)
+![SEH_crash](/assets/images/seh/SEH_crash.jpg)
 
 Calculate offsets with `!mona findmsp`
 
-[!SEH_control](/assets/images/seh/SEH_examine.jpg)
+![SEH_control](/assets/images/seh/SEH_examine.jpg)
 
 Now that we know the offset, we confirm control by crashing with another simple attack string ss per the offset specified when we examined with `!mona findmsp`
 ``buffer = "A"*608 + "B"*4 + "C"*4 + "D"*1384``
 
 Proof of control: 
 
-[!SEH_control](/assets/images/seh/SEH_control.jpg)
+![SEH_control](/assets/images/seh/SEH_control.jpg)
 
 
-# THIS IS A DRAFT
+
+https://www.securitysift.com/windows-exploit-development-part-6-seh-exploits/
