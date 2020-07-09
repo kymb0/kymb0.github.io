@@ -24,7 +24,11 @@ tags:
 
 ##### There are already many fantastic articles on this subject out there (some of which are linked throughout this article), which I encourage you to consume in order to get an even better understanding. 
 
+#### What is an exception Handler?
 
+In simple terms, an Exception Handler is exactly as the name implies, it *handles exceptions*, that is to say, when a program reaches something outside it's known functionality, an exception is raised (eg if a program wants an input between 2 and 5, and you put in 6). The program then needs to know how to *handle* this, either with an error message, exit code, or whatever else.
+
+A Structured Exception Handler will follow a structure in  regards to handling exceptions
 For every exception handler, there is an Exception Registration Record structure.
 These structures are chained together to create a "linked list" (a linked list contains a sequence of data records)
 
