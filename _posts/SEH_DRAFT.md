@@ -17,7 +17,7 @@ tags:
   - osce
   - assembly
 ---
-
+# THIS IS A DRAFT
 ## A primer on Structured Exception Handling (win32 exploitation)
 
 *This article is written to help those who want a conceptual grasp on SEH exploits, I wrote this to help myself obtain a clear understanding before my CP course starts.*
@@ -78,6 +78,4 @@ Proof of control:
 
 ![SEH_control](/assets/images/seh/SEH_control.JPG)
 
-
-
-https://www.securitysift.com/windows-exploit-development-part-6-seh-exploits/
+# THIS IS A DRAFT
