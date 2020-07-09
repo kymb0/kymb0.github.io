@@ -20,7 +20,7 @@ tags:
 # THIS IS A DRAFT
 ## A primer on Structured Exception Handling (win32 exploitation)
 
-*This article is written to help those who want a conceptual grasp on SEH exploits, I wrote this to help myself obtain a clear understanding before my CP course starts.*
+*This article is written to help those who want a conceptual grasp on SEH exploits, I wrote this to help myself obtain a clear understanding before my CTP course starts.*
 
 ##### There are already many fantastic articles on this subject out there (some of which are linked throughout this article), which I encourage you to consume in order to get an even better understanding. 
 
