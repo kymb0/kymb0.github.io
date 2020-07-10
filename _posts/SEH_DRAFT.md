@@ -98,7 +98,7 @@ buffer = "A"*608 + nSEH + SEH + "D"*1384
 
 Proof of control: 
 
-![SEH_control](/assets/images/seh/SEH_control.jpg)
+![SEH_control](/assets/images/seh/SEH_control.JPG)
 
 Now we choose an address to point to in a module containing POP+POP+RET with `!mona seh`
 
