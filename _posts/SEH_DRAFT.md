@@ -5,8 +5,8 @@ excerpt: "A primer for n00bs like myself in preparation for the CTP course offer
 date: 2020-07-xx
 header:
   #image: /assets/images/SHELLCODING32.png
-  thumb: /assets/images/SHELLCODING32.png
-  teaser: /assets/images/SHELLCODING32.png
+  thumb: /assets/images/seh/lich_boi.jpg
+  teaser: /assets/images/seh/lich_boi.jpg
   teaser_home_page: true
 classes: wide
 categories:
@@ -18,6 +18,9 @@ tags:
   - assembly
 ---
 # THIS IS A DRAFT
+
+![omg](/assets/images/seh/lich_boi.jpg)
+
 ## A primer on Structured Exception Handling (win32 exploitation)
 
 *This article is written to help those who want a conceptual grasp on SEH exploits, I wrote this to help myself obtain a clear understanding before my CTP course starts.*
