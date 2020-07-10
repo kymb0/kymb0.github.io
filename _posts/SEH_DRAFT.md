@@ -28,19 +28,12 @@ tags:
 
 In simple terms, an Exception Handler is exactly as the name implies, it *handles exceptions*, that is to say, when a program reaches something outside it's known functionality, an exception is raised (eg if a program wants an input between 2 and 5, and you put in 6). The program then needs to know how to *handle* this, either with an error message, exit code, or whatever else.
 
-A Structured Exception Handler will follow a structure in  regards to handling exceptions
+A Structured Exception Handler will follow a structure in  regards to handling exceptions.
 
 For every exception handler, there is an Exception Registration Record structure.
-These structures are chained together to create a "linked list" (a linked list contains a sequence of data records)
+These structures are chained together to create a "linked list" (a linked list contains a sequence of data records).
 
-When an exception is triggered the OS scans down this list to evaluate the other exception functions until it finds a suitable exception handler for the current exception. (If no error is found, windows places a generic handler at the end to ensure it wil be handled in some manner)
-
-In order to do this the Exception Handler must contain both a pointer to the current “Exception Registration Record” (SEH) and a pointer to the “Next Exception Registration Record” (nSEH). 
-
-As the windows stack grows downwards, the order is reversed.
-
-
-As an exception occurs in a program function the exception handler pushes the elements of it's structure to the stack as this is part of the function prologue to execute the exception, during which time the SEH will be located at esp +8.
+When an exception is triggered the OS scans down this list to evaluate the other exception functions until it finds a suitable exception handler for the current exception. (If no error is found, windows places a generic handler at the end to ensure it wil be handled in some manner).
 
 When an exception occurs and the Exception Handler (SEH) is called, it’s value is put in EIP. Since we have control over SEH, we now have control over EIP and the execution flow of the application. 
 
