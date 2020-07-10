@@ -2,7 +2,7 @@
 layout: single
 title: "SEH primer for CTP"
 excerpt: "A primer for n00bs like myself in preparation for the CTP course offered by Offensive Security"
-date: 2020-07-xx
+date: 2020-07-10
 header:
   #image: /assets/images/SHELLCODING32.png
   thumb: /assets/images/seh/lich_boi.jpg
