@@ -74,6 +74,7 @@ We also know that the EstablisherFrame (which starts with Next SEH) is located a
 To demonstrate this, we use example exercise from [https://www.fuzzysecurity.com/tutorials/expDev/3.html](https://www.fuzzysecurity.com/tutorials/expDev/3.html) (vulnerable software link is broken, software available on exploit-DB [here](https://www.exploit-db.com/exploits/17803)).
 **Another invaluable resource for this subject is: [https://www.securitysift.com/windows-exploit-development-part-6-seh-exploits/](https://www.securitysift.com/windows-exploit-development-part-6-seh-exploits/)**
 
+
 As the steps to exploitation have already been covered, I will not run through them again here, only provide a brief summary.
 
 First, we crash the application with a pattern attack string to locate the offset to SEH, which mona will do the heavy lifting for.
@@ -86,8 +87,14 @@ Calculate offsets with `!mona findmsp`
 
 ![SEH_control](/assets/images/seh/SEH_examine.jpg)
 
-Now that we know the offset, we confirm control by crashing with another simple attack string ss per the offset specified when we examined with `!mona findmsp`
-``buffer = "A"*608 + "B"*4 + "C"*4 + "D"*1384``
+Now that we know the offset, we confirm control by crashing with another simple attack string as per the offset specified when we examined with `!mona findmsp`
+
+```
+nSEH="B"*4
+SEH="C"*4
+buffer = "A"*608 + nSEH + SEH + "D"*1384
+```
+
 
 Proof of control: 
 
