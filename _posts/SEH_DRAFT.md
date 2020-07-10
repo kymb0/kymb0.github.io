@@ -162,7 +162,8 @@ So the takeaways for exploiting SEH are:
 * Use SEH to move up 8 to nSEH
 * Use nSEH to Jump back over SEH and into shellcode
 
-I hope as an aspiring OSCE/security researcher you found this informative and above else *helpful*
-If anyone has any suggestions, criticisms or wants to be my friend :) I am welcome to all feedback
+
+#### I hope as an aspiring OSCE/security researcher you found this informative and above else *helpful* - I will be following this up with at least an article on ASLR.
+
 
 # THIS IS A DRAFT
