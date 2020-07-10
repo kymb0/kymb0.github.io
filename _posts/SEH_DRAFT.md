@@ -58,9 +58,7 @@ Overwrite SEH with a pointer to POP POP RETN.
 Well, first remember that after passing the first exception, EIP is overwritten with the value of SEH.
 Second, the registers to which the bytes are popped into **are not important**, what is important is that when a POP occurs, ESP is shifted +4. When a RET is called, the ESP address are moved into EIP and executed.
 
-Remember that the SEH is located at esp+8 so if we increment the stack pointer with 8-bytes and return to the new pointer we will then be executing nSEH. 
-
-After which we will have at least 4-bytes room at nSEH to write some opcode that will jump to an area of memory that we control where we can place our shellcode 
+Remember that the SEH is located at ESP+8, so if we increment the stack pointer by 8bytes and return to the new pointer we will then be executing nSEH. 
 
 EG a program crashes, registers get zeroed and SP +8 is overwritten with crash string eg 41414141
 
