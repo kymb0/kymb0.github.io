@@ -40,6 +40,8 @@ These structures are chained together to create a "linked list" (a linked list c
 
 When an exception is triggered the OS scans down this list to evaluate the other exception functions until it finds a suitable exception handler for the current exception. (If no error is found, windows places a generic handler at the end to ensure it wil be handled in some manner).
 
+We can overwrite the SEH address with an overflow, and thus control it.
+
 When an exception occurs and the Exception Handler (SEH) is called, it’s value is put in EIP. Since we have control over SEH, we now have control over EIP and the execution flow of the application. 
 
 
@@ -68,6 +70,7 @@ We also know that the EstablisherFrame (which starts with Next SEH) is located a
 ## Demonstration
 
 To demonstrate this, we use example exercise from [https://www.fuzzysecurity.com/tutorials/expDev/3.html](https://www.fuzzysecurity.com/tutorials/expDev/3.html) (vulnerable software link is broken, software available on exploit-DB [here](https://www.exploit-db.com/exploits/17803)).
+
 **Another invaluable resource for this subject is: [https://www.securitysift.com/windows-exploit-development-part-6-seh-exploits/](https://www.securitysift.com/windows-exploit-development-part-6-seh-exploits/)**
 
 
