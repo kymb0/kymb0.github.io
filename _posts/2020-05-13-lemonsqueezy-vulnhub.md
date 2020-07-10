@@ -9,7 +9,6 @@ header:
 classes: wide
 categories:
   - vulnhub
-  - infosec
 tags:
   - enumeration
   - wordpress
