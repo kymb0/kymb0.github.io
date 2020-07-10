@@ -112,6 +112,7 @@ Next:
 * Import playlist
 * Pass first exception (shift+F9)
 * Hit breakpoint
+* step through to call RET (F7)
 
 Now as you can see below, EIP is now at the address of POP+POP+RET, step through until RET is called, and the next screenshot will show we have reached nSEH.
 
