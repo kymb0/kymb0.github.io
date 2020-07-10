@@ -28,7 +28,8 @@ tags:
 
 In simple terms, an Exception Handler is exactly as the name implies, it *handles exceptions*, that is to say, when a program reaches something outside it's known functionality, an exception is raised (eg if a program wants an input between 2 and 5, and you put in 6). The program then needs to know how to *handle* this, either with an error message, exit code, or whatever else.
 
-A Structured Exception Handler will follow a structure in regards to handling exceptions.
+A Structured Exception Handler will follow a structure in  regards to handling exceptions
+
 For every exception handler, there is an Exception Registration Record structure.
 These structures are chained together to create a "linked list" (a linked list contains a sequence of data records)
 
@@ -38,9 +39,11 @@ In order to do this the Exception Handler must contain both a pointer to the cur
 
 As the windows stack grows downwards, the order is reversed.
 
+
 As an exception occurs in a program function the exception handler pushes the elements of it's structure to the stack as this is part of the function prologue to execute the exception, during which time the SEH will be located at esp +8.
 
-When an exception occurs and the Exception Hander (SEH) is called, it’s value is put in EIP. Since we have control over SEH, we now have control over EIP and the execution flow of the application. 
+When an exception occurs and the Exception Handler (SEH) is called, it’s value is put in EIP. Since we have control over SEH, we now have control over EIP and the execution flow of the application. 
+
 
 #### SO WHY IS THIS RELEVANT TO US??!
 
@@ -48,8 +51,16 @@ Well, when we send an attack string which happens to overwrite the SEH, windows 
 
 #### What we can do:
 
-Overwrite SEH with a pointer to POP POP RETN (POP removes 4 bytes from the stack while RETN will return execution to the stop of the stack)
-Remember that the SEH is located at esp+8 so if we increment the stack with 8-bytes and return to the new pointer at the top of the stack we will then be executing nSEH. We then have at least 4-bytes room at nSEH to write some opcode that will jump to an area of memory that we control where we can place our shellcode 
+Overwrite SEH with a pointer to POP POP RETN. 
+
+#### Why would we want to do that?
+
+Well, first remember that after passing the first exception, EIP is overwritten with the value of SEH.
+Second, the registers to which the bytes are popped into **are not important**, what is important is that when a POP occurs, ESP is shifted +4. When a RET is called, the ESP address are moved into EIP and executed.
+
+Remember that the SEH is located at esp+8 so if we increment the stack pointer with 8-bytes and return to the new pointer we will then be executing nSEH. 
+
+After which we will have at least 4-bytes room at nSEH to write some opcode that will jump to an area of memory that we control where we can place our shellcode 
 
 EG a program crashes, registers get zeroed and SP +8 is overwritten with crash string eg 41414141
 
@@ -80,6 +91,29 @@ Now that we know the offset, we confirm control by crashing with another simple 
 
 Proof of control: 
 
-![SEH_control](/assets/images/seh/SEH_control.JPG)
+![SEH_control](/assets/images/seh/SEH_control.jpg)
+
+Now we choose an address to point to in a module containing POP+POP+RET with `!mona seh`
+
+![SEH_pointer](/assets/images/seh/SEH_pointers.jpg)
+
+Next:
+* I choose 0x6162e557
+* flip for little endian `"\x57\xe5\x62\x61"`
+* modify my malicious playlist generator (obtained from [Fuzzy Security](https://www.fuzzysecurity.com/tutorials/expDev/3.html))
+* restart the program in immunity, set a break point by going to expression 
+* Import playlist
+* Pass first exception (shift+F9)
+* Hit breakpoint
+
+Now as you can see below, EIP is now at the address of POP+POP+RET, step through until RET is called, and the next screenshot will show we have reached nSEH.
+
+![SEH_break_PPR](/assets/images/seh/SEH_break_PPR.jpg)
+
+![SEH_after_PPR](/assets/images/seh/SEH_after_PPR.jpg)
+
+Now you may have guessed something based of the below sequence, that's right! if we continue we end up in an infinite loop - this is because as we hit BBBB, ANOTHER exception is raised, thus calling POP+POP+RET again...
+
+So now we need to replace nSEH with opcode that will JMP over the next few bytes of space. A safe amount would be 10, and pad the beginning of shellcode with NOPS.
 
 # THIS IS A DRAFT
