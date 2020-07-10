@@ -11,7 +11,6 @@ header:
 classes: wide
 categories:
   - OSCE
-  - infosec
 tags:
   - ctp
   - osce
