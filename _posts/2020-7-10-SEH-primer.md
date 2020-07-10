@@ -43,6 +43,10 @@ We can overwrite the SEH address with an overflow, and thus control it.
 
 When an exception occurs and the Exception Handler (SEH) is called, it’s value is put in EIP. Since we have control over SEH, we now have control over EIP and the execution flow of the application. 
 
+As an exception occurs in a program, and is subsequently handled, the system pushes what is called an EXCEPTION_DISPOSITION Handler onto the stack. Within this structure is an "Establisher Frame" which points to the first handler record record (this handler record just so happens to contain the address of the nSEH and SEH) and is located at ESP+8.
+
+![SEH_frame](/assets/images/seh/SEH_frame.jpg)
+
 
 #### SO WHY IS THIS RELEVANT TO US??!
 
@@ -57,9 +61,9 @@ Overwrite SEH with a pointer to POP POP RETN.
 Well, after passing the first exception, EIP is overwritten with the value of SEH.
 Second, the registers to which the bytes are popped into **are not important**, what is important is that when a POP occurs, ESP is shifted +4. When a RET is called, the ESP address are moved into EIP and executed.
 
-SEH is located at ESP+8, so if we increment the stack pointer by 8bytes and return to the new pointer we will then be executing nSEH. 
+If you recall The information regarding the establisher frame, the address of nSEH is at ESP+8, so by calling POP twice we end up at our nSEH address.
 
-EG a program crashes, registers get zeroed and SP +8 is overwritten with crash string eg 41414141
+EG a program crashes, registers get zeroed and SP +8 is overwritten with crash string 41414141.
 
 ![SEH_overwrite](/assets/images/seh/SEH_overwrite.jpg)
 
@@ -121,6 +125,8 @@ Now as you can see below, EIP is now at the address of POP+POP+RET, step through
 Now you may have guessed something based of the below sequence, that's right! if we continue we end up in an infinite loop - this is because as we hit BBBB, ANOTHER exception is raised, thus calling POP+POP+RET again...
 
 So now we need to replace nSEH with opcode that will JMP over the next few bytes of space. A safe amount would be 10, and pad the beginning of shellcode with NOPS.
+
+![SEH_break_ppr2](/assets/images/seh/SEH_break_ppr2.jpg)
 
 Once this is done some shellcode is generated and placed AFTER SEH but BEFORE the rest of the attack string which should be big enough to overflow the application as below:
 
