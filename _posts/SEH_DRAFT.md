@@ -155,7 +155,7 @@ textfile.close()
 ```
 Now we generate our malicious playlist and open it in again - this time immunity does not register a crash, and we are able to connect to the bind shell payload:
 
-![SEH_exploited](/assets/images/seh/SEH_exploited.jpg)
+![SEH_exploited](/assets/images/seh/SEH_exploited1.jpg)
 
 So the takeaways for exploiting SEH are:
 
