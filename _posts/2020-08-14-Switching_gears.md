@@ -34,5 +34,6 @@ This puts me in an interesting sposition, as the last 6 or so months have been s
 I have accumulated enough knowledge and notes that by the time the new courses roll out I should be in a good position to power through the material (I hope), but for now I need to get B-U-S-Y as I have a lot of new information to cram into my brain. 
 
 Starting with this: [https://github.com/wetw0rk/AWAE-PREP](https://github.com/wetw0rk/AWAE-PREP) 
+and this:           [https://klezvirus.github.io/HTB_VulnHub_an_OSWE_approach/](https://klezvirus.github.io/HTB_VulnHub_an_OSWE_approach/)  
 
 #### See yall on the other side as a (whatever-the-new-cert-will-be-called)
