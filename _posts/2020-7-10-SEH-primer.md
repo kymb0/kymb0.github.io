@@ -17,6 +17,8 @@ tags:
   - assembly
 ---
 
+# UPDATE: CTP is cancelled  <:(  see more [here](https://kymb0.github.io/Switching_gears/)
+
 ![omg](/assets/images/seh/lich_boi.jpg)
 
 ## A primer on Structured Exception Handling (win32 exploitation)
