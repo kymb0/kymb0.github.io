@@ -23,7 +23,7 @@ tags:
 
 I am towards the end of the CTP material and have a plan to prepare for my upcoming exam, for the better part of six months I have been learning assembly, shellcoding and exploit development techniques to prime me for the OSCE exam.
 
-There was a very recent [announcement](https://www.offensive-security.com/offsec/retiring-ctp-intro-new-courses/) by Offsec that the CTP curse (and essentially) the certification will be RETIRED and replaced with a new, renamed certification that will require the completion of three courses (GG wallet) including the Advanced Web Attacks and Exploitation and two other as-yet unreleased courses which will cover Advanced Penetration testing and Windows exploit development.
+There was a very recent [announcement](https://www.offensive-security.com/offsec/retiring-ctp-intro-new-courses/) by Offsec that the CTP course (and essentially) the certification will be RETIRED and replaced with a new, renamed certification that will require the completion of three courses (GG wallet) including the Advanced Web Attacks and Exploitation and two other as-yet unreleased courses which will cover Advanced Penetration testing and Windows exploit development.
 
 ![new-cert](/assets/images/OSWE/advanced-courses-3-in-1-cert.JPG)
 
