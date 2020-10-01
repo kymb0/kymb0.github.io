@@ -13,14 +13,17 @@ Shortly after I was exposed to the Australian infosec community, and was blown a
 
 I decided that regardless of whether or not I were to gain employment in this ever changing, ever *humbling* environment, that I would continue to study it in all it's aspects.
 
-My next large target is the [OSCE](https://www.offensive-security.com/ctp-osce/), in order to prepare for this I have decided to pursue [SLAE32](https://www.pentesteracademy.com/course?id=3).
+
+My next large target initially was the [OSCE](https://www.offensive-security.com/ctp-osce/), in order to prepare for this I completed [SLAE32](https://www.pentesteracademy.com/course?id=3), which was a mind-melting levelup.
+
+However due to the discountinuation of the OSCE I have switched over to focus on web exploitation by going after the [OSWE](https://www.offensive-security.com/awae-oswe/)
 
 My goal is to help, share knowledge with, and/or inspire anyone else wanting to obtain hard cyber skills with no previous knowledge or exposure or connections.
 
 ## ~# id
 [HackTheBox](https://www.hackthebox.eu/profile/140922)
 
-[Github](https://github.com/RawrRadioMouse/)
+[Github](https://github.com/Kymb0/)
 
 [Linkedin](https://www.linkedin.com/in/k-jagdmann-2658a771/)
 
