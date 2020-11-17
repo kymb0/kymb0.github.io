@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/kymb0
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://kymb0.github.io
+  * I am kymb0 (https://keybase.io/kymb0) on keybase.
+  * I have a public key ASDDfLyiBSFCuIyb66GHxAlDGE0lqpkUbB65IHPVGgvPeQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120c37cbca2052142b88c9beba187c40943184d25aa99146c1eb92073d51a0bcf790a",
+      "host": "keybase.io",
+      "kid": "0120c37cbca2052142b88c9beba187c40943184d25aa99146c1eb92073d51a0bcf790a",
+      "uid": "3929eb4493de68d66038d522a8043f19",
+      "username": "kymb0"
+    },
+    "merkle_root": {
+      "ctime": 1605583613,
+      "hash": "ae7a6a348c0c997e8d6118f09b6f78d6fa6a40f06c7afa49215affe59cef0758185acd562f4e6f5e5c209f9f4a5beaa6d676e243c62eda7cd45b2410cb46a5af",
+      "hash_meta": "d144fc34a06bf2dd9e32b9361fed566661bf130f410335a86a6c3dee8baf32f0",
+      "seqno": 18144938
+    },
+    "service": {
+      "entropy": "yKj1MBR3vuRwdMpliDY9KLoU",
+      "hostname": "kymb0.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.5.0"
+  },
+  "ctime": 1605583676,
+  "expire_in": 504576000,
+  "prev": "7ee7b0b6d1416f92c60d160ea3c6bc7e1f60bbea338e5d91d0107883c32f1d60",
+  "seqno": 5,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgw3y8ogUhQriMm+uhh8QJQxhNJaqZFGweuSBz1RoLz3kKp3BheWxvYWTESpcCBcQgfuewttFBb5LGDRYOo8a8fh9gu+ozjl2R0BB4g8MvHWDEIJxCtzMvF9dWge/PyVX/jP+jRr4Kxwrm+x/2u8SxTIHeAgHCo3NpZ8RAKTCKH93tD6EKoO+58onv82zBik2plagYK4qb0EXMq6QbqrUxuZhR+d4d5t5I7V5DW+xzlsho5a8zVVVIx2K7AKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIDTRBMZhnfuufOy5aW4GHLDoQ8Rkfk6twbeIjZZ5KmhJo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/kymb0
+
+==================================================================
