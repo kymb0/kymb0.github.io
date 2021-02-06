@@ -16,10 +16,10 @@ minimal_mistakes_skin    : "neon" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "en-AU"
-title                    : "SecBlog"
+title                    : "kymBlog"
 title_separator          : "-"
-subtitle                 : "Feed your brain."
-name                     : "RawrRadiomouse"
+subtitle                 : ""
+name                     : "kymb0"
 description              : "Infosec_lyf"
 url                      : "https://kymb0.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
@@ -95,8 +95,8 @@ analytics:
 author:
   name             : "K Jagdmann | OSCP"
   avatar           : "/assets/images/forever_learning.jpg"
-  bio              : "Infosec student, Backyard Chef, Meme-lord, Whiskey Drinker"
-  location         : "The Aether / AWAE labs 👊"
+  bio              : "Pentester, Backyard Chef, Meme-lord, Perpetual Student, Whiskey Drinker"
+  location         : "The Void / Offshore labs"
   email            :
   links:
     - label: "Email"
