@@ -19,7 +19,6 @@ tags:
 
 ![omg...](/assets/images/NULL)
 
-
 # It's been a hot minute, and I am sure no one reads these - but it is important for me to reflect on what has been so I know where to go...
 
 __This post will be broken up into three parts:__  
@@ -29,7 +28,7 @@ __This post will be broken up into three parts:__
 
 
 ### To quickly summarise my exposure to IT before pivoting to Sec...
-...I have close to 10 years under my belt - which may SEEM like a lot, however most of the time was spent on Helpdesk, incident management and pressing buttons in a sequence to patch large scale environments. Only 3 of those years were spent accumulating hard technical skills, when I landed what I would actually call my first _real_ job in IT as a Network Technician. This job, after 7 years finally ignited my passion for tech, up until then it was "just a job" and I was always looking for something better. (Thank you Michael AKA BIG MICK)
+...I have close to 10 years under my belt - which may SEEM like a lot, however most of the time was spent on Helpdesk, incident management and pressing buttons in a sequence to patch large scale environments. Only 3 of those years were spent accumulating hard technical skills, when someone took a chance by giving me an opportunity in I would actually call my first _real_ job in IT as a Network Technician. This job, after 7 years finally ignited my passion for tech, up until then it was "just a job" and I was always looking for something better. (Thank you Michael AKA BIG MICK)
 
 During those three years I quickly progressed to being a System Engineer at another company, and shortly after was contracted out to do SysAdmin work at an Airport, where I learnt A LOT. 
 I genuinely believe that the reason I progressed so fast was because I was studying for my [OSCP](https://www.offensive-security.com/pwk-oscp/) alongside this work period, this is a whole separate point of discussion and I already have a writeup [HERE](https://kymb0.github.io/zero-2-OSCP/), which includes a more detailed breakdown of all the stuff I just rambled on about.
@@ -52,7 +51,7 @@ Funnily enough around the same time this opportunity came up, the ORIGINAL compa
 
 As things are meant to be however, the company I work for now was more than happy to bring me onboard for a rather large and complex long term project after just one interview. Now, I think it is important to consider that it really was not just the hours worth of time that I put in during this one interview, this was simply the final piece of 8 months of hard, focused work. I cannot stress the importance of community engagement enough - even if you lurk in any chats or forums you can find - you WILL learn.
 
-## cp /home/SysAdmin/skillset/* > /home/pentester/
+## cp /home/General_IT_person/skillset/* > /home/pentester/
 
 This part is directly aimed at traditional SysAdmins who want to move into Offensive Security at a __competitive__ level.  
 __Step 1:__ Unless you are already tearing through HTB and have years of CTF experience under your belt, you have to start studying for your OSCP right now, yes it is an entry level certificate, but it is entry level to one of the hardest tech jobs out there, and you need the experience of the 24 exam to help train your mind.
@@ -70,9 +69,14 @@ You have a LOT of catching up to do (I am reminded of my skillgap every day), an
 I recognised this early on, and put myself through a beginners Python course first, before starting online coding challenges and writing tools. In addition to this I took a course on Linux assembly which catapulted my understanding of program logic at a deeper level. From here I have dabbled in various other languages to the point I can pick up almost any language and _slowly_ build something adhoc.
 
 In addition the above, you are going to have to become comfortable with web to the point you know enough to learn on the job. I have never been to Uni or done any real IT course so for me this took a while, I started by creating my own webserver, which I then turned into a Vulnhub submission. This taught me how each component in a stack works, it's purpose and how they work.  
-Next targeted specific attacks, I would spin up [DVWA])(https://github.com/digininja/DVWA) and use online challenges to go hard against XSS, SQLi etc until I not only knew how to trigger them but could read existing code and know WHY it worked and WHERE to inject. This is a necessity IMO.
-The last thing I did ties both this and the coding paragraph together: I wrote a [very, very basic](https://github.com/kymb0/General_code_repo/blob/master/Code_templates/bypass_csrf_into_sqli.py) exploit in Python to launch against DVWA.
+Next targeted specific attacks, I would spin up [DVWA](https://github.com/digininja/DVWA) and use online challenges to go hard against XSS, SQLi etc until I not only knew how to trigger them but could read existing code and know WHY it worked and WHERE to inject. This is a necessity IMO.
+The last thing I did ties both this and the coding paragraph together: I wrote a [very, very basic](https://github.com/kymb0/General_code_repo/blob/master/Code_templates/bypass_csrf_into_sqli.py) exploit in Python to launch against DVWA.  
+(As a side note I DID also begin the [AWAE](https://www.offensive-security.com/awae-oswe/) course, however after stopping for the third time to do a deep dive into a particular subject I decided that while the short amount I had worked through was invaluable, I would revisit it at a later stage)
 
-This might seem like a lot but once you get the ball rolling thing start falling into place faster and faster.
+This might seem like a lot but once you get the ball rolling thing start falling into place faster and faster, just keep going.
+
+## An example of why all this is important:
+
+
 
 
