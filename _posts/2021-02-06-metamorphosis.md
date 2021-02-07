@@ -68,7 +68,7 @@ This also leads me to my next pint, which will be controversial among some peopl
 You have a LOT of catching up to do (I am reminded of my skillgap every day), and being able to fix broken exploits ALA OSCP is simply not good enough, and example why will be provided in the last section of the post.  
 I recognised this early on, and put myself through a beginners Python course first, before starting online coding challenges and writing tools. In addition to this I took a course on Linux assembly which catapulted my understanding of program logic at a deeper level. From here I have dabbled in various other languages to the point I can pick up almost any language and _slowly_ build something adhoc.  
 
-In addition the above, you are going to have to become comfortable with web to the point you know enough to learn on the job. I have never been to Uni or done any real IT course so for me this took a while, I started by creating my own webserver, which I then turned into a Vulnhub submission. This taught me how each component in a stack works, it's purpose and how they work.  
+In addition the above, you are going to have to become comfortable with web to the point you know enough to learn on the job. I have never been to Uni or done any real IT course so for me this took a while, I started by creating my own webserver, which I then turned into a [Vulnhub submission](https://www.vulnhub.com/entry/stripes-1,468/). This taught me how each component in a stack works, it's purpose and how they work.  
 Next targeted specific attacks, I would spin up [DVWA](https://github.com/digininja/DVWA) and use online challenges to go hard against XSS, SQLi etc until I not only knew how to trigger them but could read existing code and know WHY it worked and WHERE to inject. This is a necessity IMO.  
 The last thing I did ties both this and the coding paragraph together: I wrote a [very, very basic](https://github.com/kymb0/General_code_repo/blob/master/Code_templates/bypass_csrf_into_sqli.py) exploit in Python to launch against DVWA.  
 (As a side note I DID also begin the [AWAE](https://www.offensive-security.com/awae-oswe/) course, however after stopping for the third time to do a deep dive into a particular subject I decided that while the short amount I had worked through was invaluable, I would revisit it at a later stage)
@@ -82,11 +82,11 @@ He proved the compromise and provided the reproduction steps (again, both for pr
 Now in this situation a RETEST is required, to test the specific vulnerability found and make sure the vector is patched up, and that whichever fix has been deployed does not open any other attack vectors.  
 And so a few weeks later I was told I would be the one to retest. I looked through the original job, made sure I could access the endpoint, reached out to the Project Manager to ensure that on the day of testing everything would be ready for me to go, and I would not have to chase anything up.  
 I started the test by immediately following the documented reproduction steps, as is obvious, if these are reproducible to the same affect then obviously nothing has been done.  
-The steps did NOT work, in fact, all I observed in burp was that EVERY response was a "500 Internal Server Error"... Hmmm.  
+The steps did NOT work, in fact, all I observed in burp was that EVERY response was a `500 Internal Server Error`... Hmmm.  
 So the server is no longer providing any verbosity in it's response, but it IS telling me that the server came back with an error.  
 So I decided to see if I could get something other than a 500/prove code execution. The only real way to do this in this scenario is by trying to make the server timeout by injecting either `SLEEP` or `WAITFOR` or, well, you get the idea.  
 
-Lo and behold, the below caused the server to timeout with a "504 gateway Timeout": 
+Lo and behold, the below caused the server to timeout with a `504 gateway Timeout`: 
 ```
 {
   json_val_1 : "foo"
