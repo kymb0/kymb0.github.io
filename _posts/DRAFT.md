@@ -30,7 +30,7 @@ __This post will be broken up into three parts:__
 ### To quickly summarise my exposure to IT before pivoting to Sec...
 ...I have close to 10 years under my belt - which may SEEM like a lot, however most of the time was spent on Helpdesk, incident management and pressing buttons in a sequence to patch large scale environments. Only 3 of those years were spent accumulating hard technical skills, when someone took a chance by giving me an opportunity in I would actually call my first _real_ job in IT as a Network Technician. This job, after 7 years finally ignited my passion for tech, up until then it was "just a job" and I was always looking for something better. (Thank you Michael AKA BIG MICK)
 
-During those three years I quickly progressed to being a System Engineer at another company, and shortly after was contracted out to do SysAdmin work at an Airport, where I learnt A LOT. 
+During those three years I quickly progressed to being a System Engineer at another company, and shortly after was contracted out to do SysAdmin work at an Airport and an Education Institute, where I learnt A LOT. 
 I genuinely believe that the reason I progressed so fast was because I was studying for my [OSCP](https://www.offensive-security.com/pwk-oscp/) alongside this work period, this is a whole separate point of discussion and I already have a writeup [HERE](https://kymb0.github.io/zero-2-OSCP/), which includes a more detailed breakdown of all the stuff I just rambled on about.
 
 ## So let's begin
