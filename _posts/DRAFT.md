@@ -19,6 +19,7 @@ tags:
 
 ![omg...](/assets/images/NULL)
 
+
 # It's been a hot minute, and I am sure no one reads these - but it is important for me to reflect on what has been so I know where to go...
 
 __This post will be broken up into three parts:__  
@@ -51,5 +52,27 @@ Funnily enough around the same time this opportunity came up, the ORIGINAL compa
 
 As things are meant to be however, the company I work for now was more than happy to bring me onboard for a rather large and complex long term project after just one interview. Now, I think it is important to consider that it really was not just the hours worth of time that I put in during this one interview, this was simply the final piece of 8 months of hard, focused work. I cannot stress the importance of community engagement enough - even if you lurk in any chats or forums you can find - you WILL learn.
 
+## cp /home/SysAdmin/skillset/* > /home/pentester/
+
+This part is directly aimed at traditional SysAdmins who want to move into Offensive Security at a __competitive__ level.  
+__Step 1:__ Unless you are already tearing through HTB and have years of CTF experience under your belt, you have to start studying for your OSCP right now, yes it is an entry level certificate, but it is entry level to one of the hardest tech jobs out there, and you need the experience of the 24 exam to help train your mind.
+
+__The rest:__ While we have our own skillset and knowledge of networks, business needs/stakeholder engagement as well as core AD knowledge - we are at a massive disadvantage, and that is: We are not devs, and as such we do not possess the mindset of a dev, which let me tell you a seasoned dev will navigate through problems faster than you can say "let me google it". The are professionals at being in situations where they do not know/understand the deeper machinations of a technology, and bringing themselves up to speed in a short amount of time - it's kinda their job.
+Many times I have worked with colleagues who think that is acceptable to solve an issue by running someone else's command/code or following the steps they found on a forum.
+<WRONG.jpeg>
+This leads to broken and insecure environments. It may expand your repertoire of "fixes",but not you knowledge.
+When you understand how things work, you can break/subvert/navigate around them.
+This also leads me to my next pint, which will be controversial among some people...
+
+:clap:you:clap:must:clap:learn:clap:to:clap:code:clap:
+
+You have a LOT of catching up to do (I am reminded of my skillgap every day), and being able to fix broken exploits ALA OSCP is simply not good enough, and example why will be provided in the last section of the post.
+I recognised this early on, and put myself through a beginners Python course first, before starting online coding challenges and writing tools. In addition to this I took a course on Linux assembly which catapulted my understanding of program logic at a deeper level. From here I have dabbled in various other languages to the point I can pick up almost any language and _slowly_ build something adhoc.
+
+In addition the above, you are going to have to become comfortable with web to the point you know enough to learn on the job. I have never been to Uni or done any real IT course so for me this took a while, I started by creating my own webserver, which I then turned into a Vulnhub submission. This taught me how each component in a stack works, it's purpose and how they work.  
+Next targeted specific attacks, I would spin up [DVWA])(https://github.com/digininja/DVWA) and use online challenges to go hard against XSS, SQLi etc until I not only knew how to trigger them but could read existing code and know WHY it worked and WHERE to inject. This is a necessity IMO.
+The last thing I did ties both this and the coding paragraph together: I wrote a [very, very basic](https://github.com/kymb0/General_code_repo/blob/master/Code_templates/bypass_csrf_into_sqli.py) exploit in Python to launch against DVWA.
+
+This might seem like a lot but once you get the ball rolling thing start falling into place faster and faster.
 
 
