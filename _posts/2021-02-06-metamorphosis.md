@@ -79,9 +79,12 @@ The last thing I did ties both this and the coding paragraph together: I wrote a
 
 So our client goes through a particular 3rd party for one of their applications, and during the PEN-test one of our seniors discovered that an API endpoint was vulnerable to SQLi do to [unparameterised](https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html) query sent via JSON.  
 He proved the compromise and provided the reproduction steps (again, both for proof and so the devs can test their fix) as well as what, in his opinion should be done to mitigate the SQLi - and this most certainly included the use of parameterised queries.  
+
 Now in this situation a RETEST is required, to test the specific vulnerability found and make sure the vector is patched up, and that whichever fix has been deployed does not open any other attack vectors.  
+
 And so a few weeks later I was told I would be the one to retest. I looked through the original job, made sure I could access the endpoint, reached out to the Project Manager to ensure that on the day of testing everything would be ready for me to go, and I would not have to chase anything up.  
 I started the test by immediately following the documented reproduction steps, as is obvious, if these are reproducible to the same affect then obviously nothing has been done.  
+
 The steps did NOT work, in fact, all I observed in burp was that EVERY response was a `500 Internal Server Error`... Hmmm.  
 So the server is no longer providing any verbosity in it's response, but it IS telling me that the server came back with an error.  
 So I decided to see if I could get something other than a 500/prove code execution. The only real way to do this in this scenario is by trying to make the server timeout by injecting either `SLEEP` or `WAITFOR` or, well, you get the idea.  
