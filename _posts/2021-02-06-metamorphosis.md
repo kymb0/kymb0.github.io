@@ -65,15 +65,15 @@ This also leads me to my next pint, which will be controversial among some peopl
 
 :clap:you:clap:must:clap:learn:clap:to:clap:code:clap:
 
-You have a LOT of catching up to do (I am reminded of my skillgap every day), and being able to fix broken exploits ALA OSCP is simply not good enough, and example why will be provided in the last section of the post.  
-I recognised this early on, and put myself through a beginners Python course first, before starting online coding challenges and writing tools. In addition to this I took a course on Linux assembly which catapulted my understanding of program logic at a deeper level. From here I have dabbled in various other languages to the point I can pick up almost any language and _slowly_ build something adhoc.  
+You have a LOT of catching up to do (I am reminded of my skillgap every day), and being able to fix broken exploits ALA OSCP is simply not good enough, an example why will be provided in the last section of the post.  
+I recognised this early on, and put myself through a beginners Python course first, before starting online coding challenges and writing tools from [Black Hat Python](https://nostarch.com/blackhatpython). In addition to this I took a course on Linux assembly which catapulted my understanding of program logic at a deeper level. From here I have dabbled in various other languages to the point I can pick up almost any language and _slowly_ build something adhoc.  
 
-In addition the above, you are going to have to become comfortable with web to the point you know enough to learn on the job. I have never been to Uni or done any real IT course so for me this took a while, I started by creating my own webserver, which I then turned into a [Vulnhub submission](https://www.vulnhub.com/entry/stripes-1,468/). This taught me how each component in a stack works, it's purpose and how they work.  
+In addition the above, you are going to have to become comfortable with web to the point you know enough to learn on the job. I have never been to Uni or done any real IT course so for me this took a while, I started by creating my own webserver, which I then turned into a [Vulnhub submission](https://www.vulnhub.com/entry/stripes-1,468/). This taught me how each component in a stack works, it's purpose, how they interact, and how they work.  
 Next targeted specific attacks, I would spin up [DVWA](https://github.com/digininja/DVWA) and use online challenges to go hard against XSS, SQLi etc until I not only knew how to trigger them but could read existing code and know WHY it worked and WHERE to inject. This is a necessity IMO.  
 The last thing I did ties both this and the coding paragraph together: I wrote a [very, very basic](https://github.com/kymb0/General_code_repo/blob/master/Code_templates/bypass_csrf_into_sqli.py) exploit in Python to launch against DVWA.  
 (As a side note I DID also begin the [AWAE](https://www.offensive-security.com/awae-oswe/) course, however after stopping for the third time to do a deep dive into a particular subject I decided that while the short amount I had worked through was invaluable, I would revisit it at a later stage)
 
-This might seem like a lot but once you get the ball rolling thing start falling into place faster and faster, just keep going.
+#### This might seem like a lot but once you get the ball rolling thing start falling into place faster and faster, just keep going. Do not look at this as one entire process, look at it as completing levels until you reach the boss.
 
 ## An example of why all this is important:
 
@@ -143,8 +143,8 @@ So, after all this, and after pretty much the same vuln being found on the first
 No such luck.  
 
 Long story short I was able to prove that all they had done was mitigate my particular attack through string matching/regex - which is a big no-no.  
-Unfortunately I was unable to re-exploit in my allocated time (pentesting is allllll about what you can achieve in the time you have). This however put me in a bit of a predicament, I was unable to re-exploit the endpoint, but was not confident it had been fully patched.  
-This is where experience dealing with Project Managers/stakeholders/the non-technical side of the business came in handy - I was able to communicate the situation in a manner that was non-abrasive yet concise, I essentially suggested that the business ask to actually see the code and steps taken to prevent the vuln, and if parameterisation was not being used, that it should not be deemed fit for release.
+Unfortunately I was unable to re-exploit in my allocated time (pentesting is allllll about what you can achieve in the time you have). This however put me in a bit of a predicament, as I was unable to re-exploit the endpoint, but was not confident it had been fully patched.  
+This is where experience dealing with Project Managers/stakeholders/the non-technical side of the business can be utilised - I was able to communicate the situation in a manner that was non-abrasive yet concise, I essentially suggested that the business ask to actually see the code and steps taken to prevent the vuln, and if parameterisation was not being used, that it should not be deemed fit for release.
 
 
 The last part of my blog regarding the SQLI and testing/retesting was a bit long winded I know, but I hope that the scenario in it's entirety shows both how valuable the soft skills gained form working on System's can be, as well as the need to _understand_ what you are doing along with a grasp on programming logic.
