@@ -95,9 +95,9 @@ analytics:
 author:
   name             : "K Jagdmann | OSCP"
   avatar           : "/assets/images/forever_learning.jpg"
-  bio              : "Pentester, Backyard Chef, Meme-lord, Perpetual Student, Whiskey Drinker TEST  [test](www.google.com)"
-  location         : "The Void / Offshore labs TEST  [test](www.google.com)"
-  email            : "<script>alert(XSS);</script>"
+  bio              : "Pentester, Backyard Chef, Meme-lord, Perpetual Student, Whiskey Drinker"
+  location         : "The Void / Offshore labs"
+  email            : 
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
