@@ -97,7 +97,7 @@ author:
   avatar           : "/assets/images/forever_learning.jpg"
   bio              : "Pentester, Backyard Chef, Meme-lord, Perpetual Student, Whiskey Drinker"
   location         : "The Void / Offshore labs"
-  email            :
+  email            : "TEST  [test](www.google.com)"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
