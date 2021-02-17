@@ -4,7 +4,7 @@ title: "How to post Australian News on Facebook"
 excerpt: "Wanna post about the latest croc attack but Uncle Zucc got you down? Click Here!"
 date: 2021-02-18
 header:
-  image: /assets/images/news.jpeg
+  #image: /assets/images/news.jpeg
   thumb: /assets/images/news.jpeg
   teaser: /assets/images/news.jpeg
   teaser_home_page: true
