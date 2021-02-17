@@ -21,14 +21,14 @@ tags:
 #### I am sure better bypasses will come along shortly, but for now if you Wanna post about the latest croc attack but Uncle Zucc got you down, follow the below!
 
 
-  * Go to: https://webhook.site/  
-  * In the top right hand corner and select edit  
-  * Change the content type to text/html  
+  * Go to: [https://webhook.site/](https://webhook.site/)
+  * In the top right hand corner and select `edit`  
+  * Change the content type to `text/html`  
   * In response body put: `<body onload=window.location='YOURLINKHERE'>`  
 
 Now copy your unique URL and share! Possibly with a screencap of what the site should look like when it loads, as link preview will not work.
 
-## TA-DA, how exciting!!
+## TA-DA - how exciting!!
 
 ![excited](/assets/images/lemon_grab_excited.jpeg)
 
