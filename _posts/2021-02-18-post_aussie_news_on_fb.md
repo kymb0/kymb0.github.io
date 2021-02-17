@@ -4,9 +4,9 @@ title: "How to post Australian News on Facebook"
 excerpt: "Wanna post about the latest croc attack but Uncle Zucc got you down? Click Here!"
 date: 2021-02-18
 header:
-  #image: /assets/images/news.jpeg
-  #thumb: /assets/images/news.jpeg
-  #teaser: /assets/images/news.jpeg
+  image: /assets/images/news.jpeg
+  thumb: /assets/images/news.jpeg
+  teaser: /assets/images/news.jpeg
   teaser_home_page: true
 classes: wide
 categories:
@@ -28,7 +28,7 @@ tags:
 
 Now copy your unique URL and share! Possibly with a screencap of what the site should look like when it loads, as link preview will not work.
 
-## TA-DA - how exciting!!
+## TADA - how exciting!!
 
 ![excited](/assets/images/lemon_grab_excited.jpeg)
 
@@ -36,5 +36,5 @@ __I will put a detailed explaination of what webhooks are here at some stage__
 
 
 
-On another note - during the 15 minutes I spent on this very poor post I read the word *_"NEWS"_* too many times and now it makes no sense when I look at it.
+On another note - during the 15 minutes I spent on this very poor post I read the word _"NEWS"_ too many times and now it makes no sense when I look at it.
 
