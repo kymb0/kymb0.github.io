@@ -18,7 +18,7 @@ tags:
   - news
 ---
 
-#### I am sure better bypasses will come along shortly, but for now if you simply MUST link to that latest Ugg boot design or that latest Vegemite label design, follow the below.
+#### I am sure better bypasses will come along shortly, but for now if you Wanna post about the latest croc attack but Uncle Zucc got you down, follow the below!
 
 
   * Go to: https://webhook.site/  
