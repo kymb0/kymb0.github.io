@@ -15,4 +15,4 @@ human-male 30yo boomer
 
 [Github](https://github.com/Kymb0/)
 
-[Linkedin](https://www.linkedin.com/in/k-jagdmann-2658a771/)
+[Linkedin](https://www.linkedin.com/in/k-j-2658a771/)
