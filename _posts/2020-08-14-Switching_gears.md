@@ -29,7 +29,7 @@ There was a very recent [announcement](https://www.offensive-security.com/offsec
 
 After reading through this and considering my options I have decided to complete my last two modules and head straight for the AWAE. Why? because as much as I would love to earn an OSCE, a legacy certification simply does not appeal to me and I have had much of my motivation sapped with this news.
 
-This puts me in an interesting sposition, as the last 6 or so months have been spent preparing for entirely different subject matter, and I now have to switch gears to hard Web Exploitation.
+This puts me in an interesting position, as the last 6 or so months have been spent preparing for entirely different subject matter, and I now have to switch gears to hard Web Exploitation.
 
 I have accumulated enough knowledge and notes that by the time the new courses roll out I should be in a good position to power through the material (I hope), but for now I need to get B-U-S-Y as I have a lot of new information to cram into my brain. 
 
