@@ -20,7 +20,7 @@ tags:
 ![learnin_malware](/assets/images/malware_1/1ic4.png)
 
 
-I recently completed Sektor7's ["RED TEAM Operator: Malware Development Essentials"](https://institute.sektor7.net/red-team-operator-malware-development-essentials), and was amazed and enamoured by the C++ techniques and concepts taught therein.  
+I recently completed Sektor7's [RED TEAM Operator: Malware Development Essentials](https://institute.sektor7.net/red-team-operator-malware-development-essentials), and was amazed and enamoured by the C++ techniques and concepts taught therein.  
 
 Having been previously inspired by both [Bobby Cooke's](https://0xboku.com/) aproach to applying course knowledge outside of a lab, in addition to the tradecraft of an ex-colleage and fantastic red-teamer by the name of [Jayden Caelli](https://au.linkedin.com/in/jayden-caelli-849129171). I decided to take a very basic concept and apply the knowledge I received from Sektor7 to create something that would challenge me.  
 
