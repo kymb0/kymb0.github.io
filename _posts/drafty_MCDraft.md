@@ -77,7 +77,7 @@ This script would also AES encrypt the names of the delegates, the shellcode its
 
 ![snippet of output](/assets/images/malware_1/Snippet-of-obfuscated-xml.png)  
 
-We can see that by simply applying a few basic techniques, we end up with a vastly different payload than we originally did, with the original on the right and our generated xml on the left:  
+We can see that by simply applying a few basic techniques, we end up with a vastly different payload than we originally had, with the original on the right and our generated xml on the left:  
 
 ![compare](/assets/images/malware_1/xml-compare.png)  
 
