@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Combining techniques to defeat Windows defender and default Applocker rules"
+title: "Combining techniques to defeat Windows Defender and default Applocker rules"
 excerpt: "Using techniques taught in Sektor7's RED TEAM Operator: Malware Development Essentials"
 date: 2022-03-26
 header:
