@@ -62,8 +62,7 @@ Lo and behold, it does not exist.
 After amending my code, I was able to confirm that my delegate code template is indeed good, and calls as it should.  
 
 ![MessageBox success](/assets/images/malware_1/messagebox-called-with-working-code.png)  
-
-![always check the debugger...](/assets/images/malware_1/MessageBox-ftw.png)  
+ 
 
 Having confirmed my template, I could now go on to replace using [DllImport](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.dllimportattribute?view=net-6.0) with delegates.  
 
