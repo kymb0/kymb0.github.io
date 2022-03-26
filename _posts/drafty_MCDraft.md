@@ -87,6 +87,6 @@ I grabbed a raw https beacon payload from Cobalt Strike and threw it into my scr
 
 The generated xml ended up too much of a challenge for Defender, and code execution was achieved, with the end result being a nice and shiny Cobalt Strike Beacon.  
 
-![beacon](/assets/images/malware_1/cobalt-strike-beacon.png)  
+![beacon](/assets/images/malware_1/cobalt-beacon.png)  
 
-Unfortunately however, the interactive session with Cobalt Strike gets caught eventually. Meaning that I will have to build upon the techniques applied thus far, most likely with whatever I learn in the next Sektor7 class/OSEP.  
+It is worth noting that care had to be taken when interacting with this session, and defender did detect any "noisy" activity, therefore, further tradecraft will have to be explored in the future. 
