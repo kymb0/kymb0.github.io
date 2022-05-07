@@ -16,7 +16,7 @@ tags:
   - C#
 ---
 
-<img src="/assets/images/malware_2/darren.png" alt="darren" width="600"/>  
+![learnin_malware](/assets/images/malware_2/darren.png) 
 
 * _The tool I built for this project is available [here](https://github.com/kymb0/Stealth_shellcode_runners)_  
 * _My malware study notes are available [here](https://github.com/kymb0/Malware_learns)_  
