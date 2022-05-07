@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Combining even more techniques to defeat EDR via DLL unhooking and AMSI bypass"
-excerpt: "Taking on an enterprise grade EDR"
+excerpt: "Taking on an enterprise grade EDR for fun, profit, and learning"
 date: 2022-05-07
 header:
   thumb: /assets/images/malware_2/darren.png
@@ -15,15 +15,13 @@ tags:
   - AV evasion
   - C#
 ---
-defeat-edr-unhook
-#DRAFT  
-#DRAFT  
+
 <img src="/assets/images/malware_2/darren.png" alt="darren" width="600"/>  
 
-The tool I built for this project is available _[here]()_  
-My malware study notes are available _[here](https://github.com/kymb0/Malware_learns)_  
+* _The tool I built for this project is available [here](https://github.com/kymb0/Stealth_shellcode_runners)_  
+* _My malware study notes are available [here](https://github.com/kymb0/Malware_learns)_  
 
-As a follow up to my previous [blog post](https://kymb0.github.io/malwaredev-bypass-av-xml/) where Defender was bypassed, I decided to challenge myself by approaching a more mature AV solution. And so I googled "enterprise grade EDR", signed up for a 30 day trial, and installed it (The name of the product will NOT be revealed in this blog or at any point in the future).  
+### As a follow up to my previous [blog post](https://kymb0.github.io/malwaredev-bypass-av-xml/) where Defender was bypassed, I decided to challenge myself by approaching a more mature AV solution. And so I googled "enterprise grade EDR", signed up for a 30 day trial, and installed it (The name of the product will NOT be revealed in this blog or at any point in the future).  
 
 ![EDR](/assets/images/malware_2/edr_settings.png)  
 
@@ -92,6 +90,3 @@ But for now, I need to decompress, as the OSEP labs open up for me tomorrow, and
 If you have read this far, thank you so much for taking the time to do so, and as always I welcome any and all feedback. You can reach me on [LinkedIn](https://www.linkedin.com/in/k-jagdmann-2658a771/) or [twitter](https://twitter.com/kymb0_irl)  
 
 ![Transformation_soon](/assets/images/malware_2/snail_or_lich.png)  
-
-#DRAFT  
-#DRAFT  
