@@ -4,7 +4,7 @@ permalink: /about/
 layout : single
 ---
 ## ~# whoami
-**low-tier hacker, furbaby father, whiskey drinker, meme collector, hot-wing bbqer, coffee slurper, bad blog writer**
+**Pentester @Bugcrowd. Also low-tier hacker, furbaby father, whiskey drinker, meme collector, hot-wing bbqer, coffee slurper, bad blog writer**
 
 ## ~# uname
 
