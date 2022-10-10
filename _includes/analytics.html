@@ -10,13 +10,5 @@
 {% when "custom" %}
   {% include /analytics-providers/custom.html %}
 {% endcase %}
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DEP0ZSVEKM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-DEP0ZSVEKM');
-</script>
 {% endif %}
