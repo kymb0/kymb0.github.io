@@ -38,14 +38,14 @@ So to test this, we feed it a page containing an image, and view the response in
 
 ![retrieved_data_stored_on_s3](/assets/images/AWS_1/upload_url_feature.jpg)  
 
-We visit the returned s3 link to confirm it contains the original linked image and lo and behold, the best case scenario is true, and we are able to make requests in some capacity within the context of the server (aka SSRF, an often overlooked vulnerability)  
+We visit the returned s3 link to confirm it contains the original linked image and lo and behold, the best case scenario is true, and we are able to make requests in some capacity within the context of the server (aka Server Side Request Forgery, an often overlooked vulnerability)  
 ![CATE](/assets/images/AWS_1/kitten_image.jpg)  
 
 The most obvious step from here is to attempt a metadata v1 attack, where we trick the underlying EC2 instance to hit the AWS metadata endpoint to retrive privileged information.
 
 ![ssrf_v1_attempt](/assets/images/AWS_1/ssrf_v1_attempt.jpg)  
 
-This however does not work and returns a server error immediately. Further testing revealed that the application required a `200` response to be suvvesful. This indicates either that metadata v2 was in use which requires more sophisticated techniques, or, that the webapp may be running on lambda.  
+This however does not work and returns a server error immediately. Further testing revealed that the application required a `200` response to be succesful. This indicates either that metadata v2 was in use which requires more sophisticated techniques, or, that the webapp may be running on lambda.  
 
 After trying a few different approaches, I discovered an LFI (local file inclusion) escalation which allowed for the retrieval of files within the ephemeral environment.  
 As a common way to feed credentials to lambda functions is via environment variables, we attempt to continue our chain of attacks by retrieving a copy of `/proc/self/environ`  
@@ -60,7 +60,7 @@ We store these secrets in our envrinment variables for our terminal session and 
 
 ![stolen_key_auth_success](/assets/images/AWS_1/stolen_key_auth_success.jpg)  
 
-Unfortunately from here however, we discover the account does not have IAM list privileges after trying to list policies. I even tried to enumerate with an AWS exploit tool called [PACU](![ssrf_loot](https://github.com/RhinoSecurityLabs/pacu) to see if I was missing anything, it was however a dead on the IAM front. When this happened I said "IAM dissapointed"  
+Unfortunately from here however, we discover the account does not have IAM list privileges after trying to list policies. I even tried to enumerate with an AWS exploit tool called ![PACU](https://github.com/RhinoSecurityLabs/pacu) to see if I was missing anything, it was however a dead on the IAM front. When this happened I said "IAM dissapointed"  
 
 ![dissapointed](/assets/images/AWS_1/dissapointed.gif)  
 ![list_policy_fail](/assets/images/AWS_1/list_policy_fail.jpg)  
@@ -75,9 +75,7 @@ Although we were unable to enumerate our own level of permissions, we can determ
 
 Now this is spciey, we cannot enumerate our own permissions in `IAM`, but we can not only list the `S3` buckets but can see what is inside of them, 
 
-discover the account does not have IAM list privileges
-explore s3
-list dev-bucket contents
+
 grab ssh keys and config
 ssh in and enumerate current roles policies
 discover that the previous assumed role has full access on lambda and the current assumed role has createpolicy and attachrolepolicy
