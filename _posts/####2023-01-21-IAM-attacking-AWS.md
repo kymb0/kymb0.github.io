@@ -60,7 +60,7 @@ We store these secrets in our envrinment variables for our terminal session and 
 
 ![stolen_key_auth_success](/assets/images/AWS_1/stolen_key_auth_success.jpg)  
 
-Unfortunately from here however, we discover the account does not have IAM list privileges after trying to list policies. I even tried to enumerate with an AWS exploit tool called ![PACU](https://github.com/RhinoSecurityLabs/pacu) to see if I was missing anything, it was however a dead on the IAM front. When this happened I said "IAM dissapointed"  
+Unfortunately from here however, we discover the account does not have IAM list privileges after trying to list policies. I even tried to enumerate with an AWS exploit tool called [PACU](https://github.com/RhinoSecurityLabs/pacu) to see if I was missing anything, it was however a dead-end on the IAM front. When this happened I said "IAM dissapointed"  
 
 ![dissapointed](/assets/images/AWS_1/dissapointed.gif)  
 ![list_policy_fail](/assets/images/AWS_1/list_policy_fail.jpg)  
