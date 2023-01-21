@@ -4,8 +4,8 @@ title: "IAM hacking AWS"
 excerpt: "Using AWSGoat to better understand how to attack AWS"
 date: 2023-01-21
 header:
-  thumb: /assets/images/malware_1/1ic4.png
-  teaser: /assets/images/malware_1/1ic4.png
+  thumb: /assets/images/AWS_1/chillin_on_cloud.jpg
+  teaser: /assets/images/AWS_1/chillin_on_cloud.jpg
   teaser_home_page: true
 classes: wide
 categories:
@@ -48,11 +48,33 @@ The most obvious step from here is to attempt a metadata v1 attack, where we tri
 This however does not work and returns a server error immediately. Further testing revealed that the application required a `200` response to be suvvesful. This indicates either that metadata v2 was in use which requires more sophisticated techniques, or, that the webapp may be running on lambda.  
 
 After trying a few different approaches, I discovered an LFI (local file inclusion) escalation which allowed for the retrieval of files within the ephemeral environment.  
-As a common way to feed credentials to lambda functions is via environment variables, we attempt to continue our chain of attacks by retrieving a copy of `/proc/self/environ`
+As a common way to feed credentials to lambda functions is via environment variables, we attempt to continue our chain of attacks by retrieving a copy of `/proc/self/environ`  
 
-![ssrf_4_real](/assets/images/AWS_1/SSRF.JPG)
+![ssrf_4_real](/assets/images/AWS_1/SSRF.JPG)  
 
-export env vars
+We download the stored file on the S3 bucket and `cat` the contents, revealing the AWS secrets of the role running the application:  
+
+![ssrf_loot](/assets/images/AWS_1/SSRF_LOOT.JPG)  
+
+We store these secrets in our envrinment variables for our terminal session and succesfully make a call to AWS:  
+
+![stolen_key_auth_success](/assets/images/AWS_1/stolen_key_auth_success.jpg)  
+
+Unfortunately from here however, we discover the account does not have IAM list privileges after trying to list policies. I even tried to enumerate with an AWS exploit tool called [PACU](![ssrf_loot](https://github.com/RhinoSecurityLabs/pacu) to see if I was missing anything, it was however a dead on the IAM front. When this happened I said "IAM dissapointed"  
+
+![dissapointed](/assets/images/AWS_1/dissapointed.gif)  
+![list_policy_fail](/assets/images/AWS_1/list_policy_fail.jpg)  
+![pacu_IAM_enum_fail](/assets/images/AWS_1/pacu_iam_enum_fail.jpg)  
+
+We know that our file is being stored on the production S3 bucket, so we run `aws s3api list-buckets` to see what other buckets there are and how much access we have. After revealing a potentially interesting bucket, we attempt to list the objects and find some rather interesting files. It appears that this bucket has been used to store sensitive information pertaining to users accessing the AWS environment via SSH.
+
+![s3_list-buckets](/assets/images/AWS_1/s3_enum_dev_bucket.jpg)  
+![s3_list_objects](/assets/images/AWS_1/s3_list_objects_loot.jpg)  
+
+Although we were unable to enumerate our own level of permissions, we can determine we have a high level fo access to the `S3` service as not only ca we list thes objects, but we can access and download them as well
+
+Now this is spciey, we cannot enumerate our own permissions in `IAM`, but we can not only list the `S3` buckets but can see what is inside of them, 
+
 discover the account does not have IAM list privileges
 explore s3
 list dev-bucket contents
