@@ -122,4 +122,4 @@ We zip the `.py` file up and create a lambda function before invoking it. Runnin
 ![lambda_priv_esc_success](/assets/images/AWS_1/lambda_priv_esc_success.jpg)  
 
 Don't forget to remove the function afterwards:  
-![cleanup](/assets/imagesAWS_1/cleanup.jpg)
+![cleanup](/assets/images/AWS_1/cleanup.jpg)
