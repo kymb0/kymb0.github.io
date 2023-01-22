@@ -103,7 +103,8 @@ So reviewing the above output we can see that this policy has access to attach p
 
 ## Abusing Lambda to escalate privileges
 
-It would be good to avoid running the commands straight from the CLI if possible, again, to avoid leaving behind any obvious atrifacts of privilege escalation. Let's take another look at the `blog_app_lambda_data` role now that we have an account with sufficient `iam` actions to effectively enumerate.
+I decided to go down the route of abusing these actions via Lambda, as I thought [Cloudtrail](https://docs.aws.amazon.com/cli/latest/reference/cloudtrail/index.html) may be less likely to be configured to feed Lambda logs into [GuardDuty](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_data-sources.html) in a "real" environment (I could be way off here), nevertheless the following is a valuable exercise in understanding IAM and Lambda.  
+Let's take another look at the `blog_app_lambda_data` role now that we have an account with sufficient `iam` actions to effectively enumerate.
 
 ![dev-ec2-lambda-policies](/assets/images/AWS_1/lambda-data-role-policies.jpg)
 
