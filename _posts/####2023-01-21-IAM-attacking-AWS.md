@@ -24,6 +24,8 @@ I learnt a ton about IAM and how to attack it and, more importantly, had an abso
 
 Enough chit-chat, leeeeet's jump riiiggghhht into AWS!  
 
+## Discovering the Application
+
 Once we succesfuly deploy our environment via terraform, we will have access to the application URL, and navigating here shows a blog website.  
 ![blog_landing_page](/assets/images/AWS_1/Blog_landing_page.jpg)
 
@@ -40,6 +42,8 @@ So to test this, we feed it a page containing an image, and view the response in
 
 We visit the returned s3 link to confirm it contains the original linked image and lo and behold, the best case scenario is true, and we are able to make requests in some capacity within the context of the server (aka Server Side Request Forgery, an often overlooked vulnerability)  
 ![CATE](/assets/images/AWS_1/kitten_image.jpg)  
+
+## Getting a Foothold
 
 The most obvious step from here is to attempt a metadata v1 attack, where we trick the underlying EC2 instance to hit the AWS metadata endpoint to retrive privileged information.
 
@@ -66,6 +70,8 @@ Unfortunately from here however, we discover the account does not have IAM list 
 ![list_policy_fail](/assets/images/AWS_1/list_policy_fail.jpg)  
 ![pacu_IAM_enum_fail](/assets/images/AWS_1/pacu_iam_enum_fail.jpg)  
 
+## Exploring S3
+
 We know that our file is being stored on the production S3 bucket, so we run `aws s3api list-buckets` to see what other buckets there are and how much access we have. After revealing a potentially interesting bucket, we attempt to list the objects and find some rather interesting files. It appears that this bucket has been used to store sensitive information pertaining to users accessing the AWS environment via SSH.
 
 ![s3_list-buckets](/assets/images/AWS_1/s3_enum_dev_bucket.jpg)  
@@ -79,6 +85,8 @@ Although we were unable to enumerate our own level of permissions, we can determ
 The stolen information in the exposed bucket allow us to SSH straight into an EC2 instance which did not have proper [rules for inbound traffic](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html) setup.  
 
 ![ssh_succesful](/assets/images/AWS_1/ssh_successful.jpg)
+
+## Reviewing IAM
 
 A qucik explaination of why we run `aws sts get-caller-identity` followed by `aws iam list-attached-role-policies --role-name AWS_GOAT_ROLE` after sonnecting via `ssh` is as follows: First, `sts get-caller-identity`, allows us to discover which credentials are being used to call `aws` operations, we can determine the specifics of what we are dealing with by matching the output against the `IAM` `ARN` syntaxes from the [AWS reference page](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 
@@ -100,10 +108,14 @@ It would be good to avoid running the commands straight from the CLI if possible
 
 ![dev-ec2-lambda-policies](/assets/images/AWS_1/lambda-data-role-policies.jpg)
 
-The `blog_app_lambda_data`
+The `blog_app_lambda_data` role has full lambda access, meaning we can create functions. If we look back at `dev-ec2-lambda-policies` for we see that `iam:PassRole` is present. If the `blog_app_lambda_data` role had the same level of permissions that the `AWS_GOAT_ROLE` role did through the `dev-ec2-lambda-policies` policy; we could effectively create a lambda function that creates a new policy and attaches it to the `blog_app_lambda_data` role. We could abuse the  presence of `iam:PassRole` to execute with the `dev-ec2-lambda-policies` level of permissions.  
+Luckily the `iam:AttachRolePolcy` action will allow us to simply attach the `dev-ec2-lambda-policies` policy to `blog_app_lambda_data`, we do this as below:  
 
-`iam:PassRole` action however the resource is wildcarded, meaning it can be perfomed against anything.  
+![blog_app_lambda_data_attachrole](/assets/images/AWS_1/AWS_1/blog_app_lambda_data_attachrole.jpg)
 
+Now that we have the permissions of both policies attached to one role, let's create a malicous lambda function as below:  
+
+![lambda_priv_esc_function](/assets/images/AWS_1/lambda_priv_esc_function.jpg)  
 
 
 grab ssh keys and config
