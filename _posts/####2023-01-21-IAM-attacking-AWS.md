@@ -51,7 +51,7 @@ The most obvious step from here is to attempt a metadata v1 attack, where we tri
 This however does not work and returns a server error immediately. Further testing revealed that the application required a `200` response to be succesful. This indicates either that metadata v2 was in use which requires more sophisticated techniques, or, that the webapp may be running on lambda.  
 
 After trying a few different approaches, I discovered an LFI (local file inclusion) escalation which allowed for the retrieval of files within the ephemeral environment.  
-As a common way to feed credentials to lambda functions is via environment variables, we attempt to continue our chain of attacks by retrieving a copy of `/proc/self/environ`  
+As a common way to feed credentials to lambda functions is via environment variables, we attempt to continue our chain of attacks by retrieving a copy of `/proc/self/environ` (although the environment that runs the Lambda functions is ephemeral, the credentials remain valid for a period of time)  
 
 ![ssrf_4_real](/assets/images/AWS_1/SSRF.JPG)  
 
