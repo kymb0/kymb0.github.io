@@ -94,6 +94,14 @@ We retrieve the policy document for the `dev-ec2-lambda-policies` policy which w
 
 So reviewing the above output we can see that this policy has access to attach policies to other roles, this is granted by the `iam:AttachRolePolcy` action. The rourcse it can perform this action against is restriced to `blog_app_lambda_data` which just so happens to be the other role we have access to via the previously explored SSRF attack. This policy also has the `iam:CreatePolicy` action set, which presents avery interesting escalation vector - allowe me to explain: if we are looking at a policy right now to determine what this role can and cannot do, and through doing so we have discovered that the policy itself allows for the creation of NEW polcies, and that we can attach those policies to the `blog_app_lambda_data` role which we have access to, this means that we can grant a policy allowing for ALL actions against ALL resources, so basically Administrator access without actually attaching the AWS managed `AdministratorAccess` polciy, which, in a real setting would likely raise alarm bells if we were to add ourselves to it.
 
+## Abusing Lambda to escalate privileges
+
+It would be good to avoid running the commands straight from the CLI if possible, again, to avoid leaving behind any obvious atrifacts of privilege escalation. Let's take another look at the `blog_app_lambda_data` role now that we have an account with sufficient `iam` actions to effectively enumerate.
+
+![dev-ec2-lambda-policies](/assets/images/AWS_1/lambda-data-role-policies.jpg)
+
+The `blog_app_lambda_data`
+
 `iam:PassRole` action however the resource is wildcarded, meaning it can be perfomed against anything.  
 
 
