@@ -71,9 +71,31 @@ We know that our file is being stored on the production S3 bucket, so we run `aw
 ![s3_list-buckets](/assets/images/AWS_1/s3_enum_dev_bucket.jpg)  
 ![s3_list_objects](/assets/images/AWS_1/s3_list_objects_loot.jpg)  
 
-Although we were unable to enumerate our own level of permissions, we can determine we have a high level fo access to the `S3` service as not only ca we list thes objects, but we can access and download them as well
+Although we were unable to enumerate our own level of permissions, we can determine we have a high level fo access to the `S3` service as not only can we list thes objects, but we can access and download them as well.
 
-Now this is spciey, we cannot enumerate our own permissions in `IAM`, but we can not only list the `S3` buckets but can see what is inside of them, 
+![s3_download_objects](/assets/images/AWS_1/s3_download_loot.jpg)
+![s3_stolen_config](/assets/images/AWS_1/ssh_config.jpg)
+
+The stolen information in the exposed bucket allow us to SSH straight into an EC2 instance which did not have proper [rules for inbound traffic](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html) setup.  
+
+![ssh_succesful](/assets/images/AWS_1/ssh_successful.jpg)
+
+A qucik explaination of why we run `aws sts get-caller-identity` followed by `aws iam list-attached-role-policies --role-name AWS_GOAT_ROLE` after sonnecting via `ssh` is as follows: First, `sts get-caller-identity`, allows us to discover which credentials are being used to call `aws` operations, we can determine the specifics of what we are dealing with by matching the output against the `IAM` `ARN` syntaxes from the [AWS reference page](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
+
+SO after looking at this, we know that the _assumed role_ syntax is as below, and that the rolename must be `AWS_GOAT_ROLE`, as the _role-session-name_ is simply used [uniquely identify](https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html#:~:text=Use%20the%20role%20session%20name,account%20that%20owns%20the%20role.) a session when the role is assumed.
+
+![ssh_succesful](/assets/images/AWS_1/understanding_output_of_getcalleridentity.jpg)  
+
+Running `aws iam list-attached-role-policies --role-name AWS_GOAT_ROLE` will return the names and ARNs of the managed policies attached to the IAM role, which in this case as we have determined, is `AWS_GOAT_ROLE`. Think of this as kind of like enumerating which Active Directory groups a user is a member of.    
+
+We retrieve the policy document for the `dev-ec2-lambda-policies` policy which will show us the actions the policy allows us to perform and which resources we can perform them against. Note we specified the version in our command, this can be retrieved with `aws iam get-policy --policy-arn`
+
+![dev-ec2-lambda-policies](/assets/images/AWS_1/dev-ec2-lambda-policies.jpg)
+
+So reviewing the above output we can see that this policy has access to attach policies to other roles, this is granted by the `iam:AttachRolePolcy` action. The rourcse it can perform this action against is restriced to `blog_app_lambda_data` which just so happens to be the other role we have access to via the previously explored SSRF attack. This policy also has the `iam:CreatePolicy` action set, which presents avery interesting escalation vector - allowe me to explain: if we are looking at a policy right now to determine what this role can and cannot do, and through doing so we have discovered that the policy itself allows for the creation of NEW polcies, and that we can attach those policies to the `blog_app_lambda_data` role which we have access to, this means that we can grant a policy allowing for ALL actions against ALL resources, so basically Administrator access without actually attaching the AWS managed `AdministratorAccess` polciy, which, in a real setting would likely raise alarm bells if we were to add ourselves to it.
+
+`iam:PassRole` action however the resource is wildcarded, meaning it can be perfomed against anything.  
+
 
 
 grab ssh keys and config
