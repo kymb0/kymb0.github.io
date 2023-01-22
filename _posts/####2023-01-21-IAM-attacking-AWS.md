@@ -18,11 +18,10 @@ tags:
 
 ![chillin_on_a_cloud](/assets/images/AWS_1/chillin_on_cloud.jpg)
 
-After identifying a knowledge gap in pentesting AWS, I decided to spin up and attack [AWSGoat](https://github.com/ine-labs/AWSGoat) which is an intentionally vulnerable AWS lab environment with multiple paths to privilege escalation.  
+After identifying a knowledge gap in pentesting AWS (and cloud in general), I decided to spin up and attack [AWSGoat](https://github.com/ine-labs/AWSGoat) which is an intentionally vulnerable AWS lab environment with multiple paths to privilege escalation.   
 
-I learnt a ton about IAM and how to attack it and, more importantly, had an absolute blast.  
+I learnt a ton about IAM and how to attack it and, more importantly, had an absolute blast. so much in fact, that I have decided to make this a 3-part series to include [AzureGoat](https://github.com/ine-labs/AzureGoat) and [GCPGoat](https://github.com/ine-labs/GCPGoat)  
 
-Enough chit-chat, leeeeet's jump riiiggghhht into AWS!  
 
 ## Discovering the Application
 
