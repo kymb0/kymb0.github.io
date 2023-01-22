@@ -111,15 +111,15 @@ It would be good to avoid running the commands straight from the CLI if possible
 The `blog_app_lambda_data` role has full lambda access, meaning we can create functions. If we look back at `dev-ec2-lambda-policies` for we see that `iam:PassRole` is present. If the `blog_app_lambda_data` role had the same level of permissions that the `AWS_GOAT_ROLE` role did through the `dev-ec2-lambda-policies` policy; we could effectively create a lambda function that creates a new policy and attaches it to the `blog_app_lambda_data` role. We could abuse the  presence of `iam:PassRole` to execute with the `dev-ec2-lambda-policies` level of permissions.  
 Luckily the `iam:AttachRolePolcy` action will allow us to simply attach the `dev-ec2-lambda-policies` policy to `blog_app_lambda_data`, we do this as below:  
 
-![blog_app_lambda_data_attachrole](/assets/images/AWS_1/AWS_1/blog_app_lambda_data_attachrole.jpg)
+![blog_app_lambda_data_attachrole](/assets/images/AWS_1/blog_app_lambda_data_attachrole.jpg)
 
 Now that we have the permissions of both policies attached to one role, let's create a malicous lambda function as below:  
 
 ![lambda_priv_esc_function](/assets/images/AWS_1/lambda_priv_esc_function.jpg)  
 
+We zip the `.py` file up and create a lambda function before invoking it. Running `aws iam list-attached-role-policies --role-name blog_app_lambda_data` after doing this shows that we have succesfully managed to create a new policy and attach it, all from within a lambda function.  
 
-grab ssh keys and config
-ssh in and enumerate current roles policies
-discover that the previous assumed role has full access on lambda and the current assumed role has createpolicy and attachrolepolicy
-use these privileges to attach the 'dev-ec2-lambda-policies' policy to the 'blog_app_lambda_data' role which will allow for a privilege escalation vector via create lambda function
-back in the session as blog_app_lambda_data, create a lambda function that will create a new policy and attach it to the blog_app_lambda_data role. We perform these actions inside a lmbda function to avoid running the priv esc commands via AWS cli
+![lambda_priv_esc_success](/assets/images/AWS_1/lambda_priv_esc_success.jpg)  
+
+Don't forget to remove the function afterwards:  
+![cleanup](/assets/imagesAWS_1/cleanup.jpg)
