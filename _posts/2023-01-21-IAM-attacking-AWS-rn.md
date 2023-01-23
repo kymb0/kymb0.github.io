@@ -26,13 +26,16 @@ I learnt a ton about IAM and how to attack it and, more importantly, had an abso
 ## Discovering the Application
 
 Once we successfully deploy our environment via terraform, we will have access to the application URL, and navigating here shows a blog website.  
+
 ![blog_landing_page](/assets/images/AWS_1/Blog_landing_page.jpg)
 
-We do not have any credentials at this stage, there is however, a sign up feature that allows us to create our own account to gain access to a dashboard where we can create new blog posts.    
+We do not have any credentials at this stage, there is however, a sign up feature that allows us to create our own account to gain access to a dashboard where we can create new blog posts.  
+
 ![register](/assets/images/AWS_1/Sign_up.jpg)  
 ![new_post](/assets/images/AWS_1/newpost.jpg)  
 
 The first thing that jumps out at us is the file upload feature, and to be more precise, the fact that we can upload via a url. This indicates that either the server will be embedding a link to the image on the blog, or retrieving the data at the specified URL and storing it somewhere. Hopefully it is the later, as this will present a clear vector for SSRF.  
+
 ![file_upload_feature](/assets/images/AWS_1/fileupload.jpg)  
 
 So to test this, we feed it a page containing an image, and view the response in burp to better understand the application logic:
@@ -40,6 +43,7 @@ So to test this, we feed it a page containing an image, and view the response in
 ![retrieved_data_stored_on_s3](/assets/images/AWS_1/upload_url_feature.jpg)  
 
 We visit the returned s3 link to confirm it contains the original linked image and lo and behold, the best case scenario is true, and we are able to make requests in some capacity within the context of the server (aka Server Side Request Forgery, an often overlooked vulnerability)  
+
 ![CATE](/assets/images/AWS_1/kitten_image.jpg)  
 
 ## Getting a Foothold
