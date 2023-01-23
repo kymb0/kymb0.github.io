@@ -4,8 +4,8 @@ title: "IAM hacking AWS"
 excerpt: "Using AWSGoat to better understand how to attack AWS"
 date: 2023-01-21
 header:
-  thumb: /assets/images/AWS_1/chillin_on_cloud.jpg
-  teaser: /assets/images/AWS_1/chillin_on_cloud.jpg
+  thumb: /assets/images/AWS_1/Blog_landing_page.jpg
+  teaser: /assets/images/AWS_1/Blog_landing_page.jpg
   teaser_home_page: true
 classes: wide
 categories:
@@ -16,7 +16,7 @@ tags:
 ---
 
 
-![chillin_on_a_cloud](/assets/images/AWS_1/chillin_on_cloud.jpg)
+![chillin_on_a_cloud](/assets/images/AWS_1/Blog_landing_page.jpg)
 
 After identifying a knowledge gap in pentesting AWS (and cloud in general), I decided to spin up and attack [AWSGoat](https://github.com/ine-labs/AWSGoat) which is an intentionally vulnerable AWS lab environment with multiple paths to privilege escalation.   
 
