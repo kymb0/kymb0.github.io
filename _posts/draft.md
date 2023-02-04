@@ -62,10 +62,21 @@ We use the extracted `.ssh config` and keys to ssh to an Azure endpoint.
 
 ![ssh_session](/assets/images/azure/ssh_as_justin.jpg)  
 
-Now that we have a foothold in the targets Azure environment, we start by seeing if we can view resources with `az resource list`
+Now that we have a foothold in the targets Azure environment, we start by seeing if we can view resources with `az resource list` which we can, we will then run `az role assignment list -g azuregoat_app` to list the role assignments that exist at a resource group scope.  
 
+_Azure role-based access control (Azure RBAC) is the authorization system you use to manage access to Azure resources. To determine what resources users, groups, service principals, or managed identities have access to, you list their role assignments._
+https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-cli
+
+### The first two screenshots are outputs of interest from listing resources when compared again listing role assignments, which is exhibited in the third screenshot. 
+
+#### Screenshot 1
 ![resourcelist_vm](/assets/images/azure/get_vmname_princ_id.jpg)  
+
+#### Screenshot 1
 ![resourcelist_automation_account](/assets/images/azure/owner_princ_id.jpg)   
+
+#### Screenshot 1
+![role_assignments](/assets/images/azure/role_assignments.jpg)   
 
 
 ## Exploring S3
