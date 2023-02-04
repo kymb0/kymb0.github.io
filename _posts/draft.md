@@ -62,11 +62,11 @@ We use the extracted `.ssh config` and keys to ssh to an Azure endpoint.
 
 ![ssh_session](/assets/images/azure/ssh_as_justin.jpg)  
 
-Unfortunately from here however, we discover the account does not have IAM list privileges after trying to list policies. I even tried to enumerate with an AWS exploit tool called [PACU](https://github.com/RhinoSecurityLabs/pacu) to see if I was missing anything, it was however a dead-end on the IAM front. When this happened I said "IAM disappointed"  
+Now that we have a foothold in the targets Azure environment, we start by seeing if we can view resources with `az resource list`
 
-![dissapointed](/assets/images/AWS_1/dissapointed.gif)  
-![list_policy_fail](/assets/images/AWS_1/list_policy_fail.jpg)  
-![pacu_IAM_enum_fail](/assets/images/AWS_1/pacu_iam_enum_fail.jpg)  
+![resourcelist_vm](/assets/images/azure/get_vmname_princ_id.jpg)  
+![resourcelist_automation_account](/assets/images/azure/owner_princ_id.jpg)   
+
 
 ## Exploring S3
 
