@@ -41,34 +41,26 @@ After poking around realising that the app appears to be more or less identical 
 
 ![file_upload_feature](/assets/images/AWS_1/fileupload.jpg)  
 
+## Getting a Foothold
+
 Where the attack chain differs from what we did previously against AWSGoat (we retrieved `/proc/self/environ`), is the local file we seek to retrieve. This time we will try to retrieve `/home/site/wwwroot/local.settings.json`  
 
 As per [Microsoft](https://learn.microsoft.com/en-us/azure/azure-functions/functions-develop-local#local-settings-file)  
 ![localsettings](/assets/images/azure/local_settings.jpg)  
 
-
 ![ssrf_localsettings_lfi](/assets/images/azure/ssrf_local_settings.jpg)  
 
-## Getting a Foothold
+We download the stored file and `cat` the contents, revealing a connection string and secrets:  
 
-The most obvious step from here is to attempt a metadata v1 attack, where we trick the underlying EC2 instance to hit the AWS metadata endpoint to retrieve privileged information.
+![ssrf_localsettings_loot](/assets/images/azure/ssrf_local_settings_loot.jpg)    
 
-![ssrf_v1_attempt](/assets/images/AWS_1/ssrf_v1_attempt.jpg)  
+We use this connection string to access Azure storage by installing the Azure Storage extension in Visual Studio code, right clicking and selecting `Attach Storage Account`, then in the prompt for a connection string paste `"CON_STR"` value that was extracted from /home/site/wwwroot/local.settings.json.  
 
-This however does not work and returns a server error immediately. Further testing revealed that the application required a `200` response to be successful. This indicates either that metadata v2 was in use which requires more sophisticated techniques, or, that the webapp may be running on lambda.  
+![sh_keys](/assets/images/azure/ssh_keys.jpg)  
 
-After trying a few different approaches, I discovered an LFI (local file inclusion) escalation which allowed for the retrieval of files within the ephemeral environment.  
-As a common way to feed credentials to lambda functions is via environment variables, we attempt to continue our chain of attacks by retrieving a copy of `/proc/self/environ` (although the environment that runs the Lambda functions is ephemeral, the credentials remain valid for a period of time)  
+We use the extracted `.ssh config` and keys to ssh to an Azure endpoint.
 
-![ssrf_4_real](/assets/images/AWS_1/SSRF.JPG)  
-
-We download the stored file on the S3 bucket and `cat` the contents, revealing the AWS secrets of the role running the application:  
-
-![ssrf_loot](/assets/images/AWS_1/SSRF_LOOT.JPG)  
-
-We store these secrets in our environment variables for our terminal session and successfully make a call to AWS:  
-
-![stolen_key_auth_success](/assets/images/AWS_1/stolen_key_auth_success.jpg)  
+![ssh_session](/assets/images/azure/ssh_as_justin.jpg)  
 
 Unfortunately from here however, we discover the account does not have IAM list privileges after trying to list policies. I even tried to enumerate with an AWS exploit tool called [PACU](https://github.com/RhinoSecurityLabs/pacu) to see if I was missing anything, it was however a dead-end on the IAM front. When this happened I said "IAM disappointed"  
 
