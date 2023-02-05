@@ -43,9 +43,9 @@ After poking around realising that the app appears to be more or less identical 
 
 ## Getting a Foothold
 
-Where the attack chain differs from what we did previously against AWSGoat (we retrieved `/proc/self/environ`), is the local file we seek to retrieve. This time we will try to retrieve `/home/site/wwwroot/local.settings.json`  
+Where the attack chain differs from what we did previously against AWSGoat (we retrieved `/proc/self/environ`), is the local file we seek to retrieve. This time we will try to retrieve `/home/site/wwwroot/local.settings.json`, which as per [Microsoft](https://learn.microsoft.com/en-us/azure/azure-functions/functions-develop-local#local-settings-file) can contain connection strings and secrets.  
 
-As per [Microsoft](https://learn.microsoft.com/en-us/azure/azure-functions/functions-develop-local#local-settings-file)  
+As we did on the AWS version of the blog app, we abuse the `value` GET parameter to achieve an LFI via SSRF:
 ![localsettings](/assets/images/azure/local_settings.jpg)  
 
 ![ssrf_localsettings_lfi](/assets/images/azure/ssrf_local_settings.jpg)  
