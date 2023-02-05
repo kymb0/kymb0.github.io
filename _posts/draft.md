@@ -103,7 +103,7 @@ az automation runbook start --automation-account-name dev-automation-account-app
 ![runbook](/assets/images/azure/runbook_replace_publish_start.jpg)  
 
 
-We can see that we successfuly escalated our role to `owner` over the entire `azuregoat_app` resource group by again running `az role assignment list -g azuregoat_app`
+We can see that we successfuly escalated our role to `owner` over the entire `azuregoat_app` resource group by again running `az role assignment list -g azuregoat_app` and seeing that the principal id of the virtual machine (which we are executing under the context of) now has the owner role assigned.
 
 ![runbook](/assets/images/azure/escalation_success.jpg)  
 
