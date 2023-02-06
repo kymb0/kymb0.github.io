@@ -87,7 +87,7 @@ A brief readthrough on [Microsoft's](https://learn.microsoft.com/en-us/azure/aut
 This looks like an attractive vector for any malcious actor, and we will attempt to weaponise this by creating a `PowershellwWorkflow` [runbook](https://learn.microsoft.com/en-us/azure/automation/automation-powershell-workflow) to be executed by the Automation Account, as doing so will allow us to execute commands under the context of `owner` as per the role assignments.
 
 ## Abusing Runbooks to Escalate Privileges  
-Similar to how we abused Lambda in AWSGoat to escalate our privileges, we will write a block of Powershellworkflow and save it to the target machine as `escalation.ps1` code before creating, updating, publishing, and finally, running the runbook.  
+Similar to how we abused Lambda in AWSGoat to escalate our privileges, we will write a Powershellworkflow and save it to the target machine as `escalation.ps1` code before creating, updating, publishing, and finally, running the runbook.  
 
 ![escalation_ps1](/assets/images/azure/escalation_ps1.jpg)  
 
