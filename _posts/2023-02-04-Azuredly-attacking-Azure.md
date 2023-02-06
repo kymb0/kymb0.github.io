@@ -28,10 +28,11 @@ Azure means clear sky and NO clouds??? Anyway, let's move on.
 ## Discovering the Application
 
 Once we successfully deploy our environment via terraform, we will have access to the application URL, and navigating here shows a blog website. This is much the same as what we did in [Part 1](https://kymb0.github.io/IAM-attacking-AWS-rn/) where we attacked AWS.  
+**Note: If you are planning on running through this yourself, the easiest way is to use the Azure CLI within the Azure Web console.
 
 ![blog_landing_page](/assets/images/azure/blog.jpg)
 
-Again, we abuse sign up feature that allows us to create our own account to gain access to a dashboard where we can create new blog posts.  
+Again, we use the public sign up feature that allows us to create our own account which will expose the application to us, including a dashboard where we can create new blog posts.  
 
 ![register](/assets/images/azure/signup.jpg)  
 ![new_post](/assets/images/azure/newpost.jpg)  
@@ -65,7 +66,7 @@ We use the extracted `.ssh config` and keys to ssh to an Azure endpoint.
 Now that we have a foothold in the targets Azure environment, we start by seeing if we can view resources with `az resource list` which we can, we will then run `az role assignment list -g azuregoat_app` to list the role assignments that exist at a resource group scope. So, basically, we are enumerating who has access to the `azuregoat_app` resource group.  
 
 _Azure role-based access control (Azure RBAC) is the authorization system you use to manage access to Azure resources. To determine what resources users, groups, service principals, or managed identities have access to, you list their role assignments._
-https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-cli
+Taken from: [https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-cli](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-cli)
 
 ### The first two screenshots are outputs of interest from listing resources when compared against listing role assignments, which is exhibited in the third screenshot. 
 
