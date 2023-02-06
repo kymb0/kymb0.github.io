@@ -104,8 +104,9 @@ We can see that we successfuly escalated our role to `owner` over the entire `az
 
 ![escalation_success](/assets/images/azure/escalation_success.jpg)  
 
-So why is this a big deal? And why do we care that someone has just taken ownership of one our resource groups?  
-Well, why don't we ask ChatGPT (lol)  
+_So, why is this a big deal? And why do we care that someone has just taken ownership of one our resource groups?_  
+
+**Well, why don't we ask ChatGPT (lol)**  
 
 Having owner-level permissions on a resource group in Azure is highly dangerous and opens up the potential for multiple attacks. With this level of access, an attacker could:
 
