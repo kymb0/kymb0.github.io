@@ -37,7 +37,7 @@ Again, we use the public sign up feature that allows us to create our own accoun
 ![register](/assets/images/azure/signup.jpg)  
 ![new_post](/assets/images/azure/newpost.jpg)  
 
-After poking around realising that the app appears to be more or less identical to what we saw on AWSGoat, we once again seek to exploit the file upload feature, as the fact we can upload a file via presenting a URL indicates that either the server will be embedding a link to the image on the blog, or retrieving the data at the specified URL and storing it somewhere. This will present a clear vector once again for SSRF.  
+After poking around and realising that the app appears to be more or less identical to what we saw on AWSGoat, we once again seek to exploit the file upload feature, as the fact we can upload a file via presenting a URL indicates that either the server will be embedding a link to the image on the blog, or retrieving the data at the specified URL and storing it somewhere. This will present a clear vector once again for SSRF.  
 
 ![file_upload_feature](/assets/images/AWS_1/fileupload.jpg)  
 
