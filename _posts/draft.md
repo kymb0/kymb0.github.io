@@ -108,16 +108,28 @@ We can see that we successfuly escalated our role to `owner` over the entire `az
 
 ![runbook](/assets/images/azure/escalation_success.jpg)  
 
+So why is this a big deal? And why do we care that someone has just taken ownership of one our resource groups?
+Well, why don't we ask ChatGPT (lol)
+
 Having owner-level permissions on a resource group in Azure is highly dangerous and opens up the potential for multiple attacks. With this level of access, an attacker could:
 
-Steal or manipulate sensitive data stored in the resource group, such as personal information or confidential business data.
+### 1. Steal or manipulate sensitive data stored in the resource group:  
+Example: An attacker gains owner-level permissions on a resource group containing a database storing personal information of customers. The attacker could access and potentially exfiltrate this sensitive information, leading to a data breach.  
 
-Modify the configuration of resources within the group, potentially leading to service disruptions or outages.
+### 2. Modify the configuration of resources within the group, potentially leading to service disruptions or outages:  
+Example: An attacker gains owner-level permissions on a resource group containing multiple virtual machines and storage accounts used for a company's e-commerce website. The attacker could modify the configuration of these resources, causing the website to become unavailable and resulting in significant downtime for the company.  
 
-Use the resource group as a launching pad for further attacks, such as compromising other Azure resources or moving laterally within an organization's network.
+### 3. Use the resource group as a launching pad for further attacks:  
+Example: An attacker gains owner-level permissions on a resource group containing a virtual machine used as a web server for a company's internal applications. The attacker could use this virtual machine as a pivot point to launch further attacks on other resources within the organization's Azure environment or on-premises network.  
 
-Gain access to billing information, potentially allowing for unauthorized charges to be incurred. ( Let's say an attacker has gained owner-level permissions on a resource group containing a virtual machine that is used as a web server for an e-commerce website. From here, the attacker could install malware on the virtual machine, compromising the website and potentially stealing sensitive information from customers. The attacker could also use the virtual machine as a pivot point to launch further attacks on other resources within the organization's Azure environment, or even within the organization's on-premises network.)
+### 4. Gain access to billing information, potentially allowing for unauthorized charges to be incurred:  
+Example: An attacker gains owner-level permissions on a resource group associated with an Azure subscription. The attacker could access the billing information for the subscription and modify the configuration of resources within the group, increasing usage and driving up the costs associated with the subscription. This could result in unauthorized charges being incurred, potentially causing financial harm to the affected organization.  
 
-Delete critical resources within the group, causing permanent data loss and potentially resulting in costly downtime for the affected organization. (As for number 4, gaining access to billing information can be achieved by accessing the Azure subscription associated with the resource group. With owner-level permissions on the resource group, an attacker would have the ability to view the billing information for the associated Azure subscription, including details on resource usage and costs incurred. The attacker could potentially modify the configuration of resources within the group, increasing usage and driving up the costs associated with the subscription. This could result in unauthorized charges being incurred, potentially causing financial harm to the affected organization.)
+### 5. Delete critical resources within the group, causing permanent data loss and potentially resulting in costly downtime:  
+Example: An attacker gains owner-level permissions on a resource group containing critical virtual machines and storage accounts used by a company. The attacker could delete these resources, causing permanent data loss and significant downtime for the company. This could result in costly business disruption and potentially long-term damage to the organization's reputation.  
 
-In conclusion, it is extremely important for organizations to properly secure their Azure resource groups and monitor for misconfigurations to prevent unauthorized access and minimize the risk of attacks.
+## TA-DA!! That concludes this blog post, I hope you learnt something about Azure, I sure did. I will be doing the [CARTP](https://www.alteredsecurity.com/azureadlab) certification soon, and can't wait to put a review up.  
+
+Stayyyy tuned for the final installment to this series, in the form of a runthrough of [GCPGoat](https://github.com/ine-labs/GCPGoat).  
+
+![celebr8](/assets/images/azure/high_five.gif)  
