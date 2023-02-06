@@ -45,8 +45,9 @@ After poking around realising that the app appears to be more or less identical 
 
 Where the attack chain differs from what we did previously against AWSGoat (we retrieved `/proc/self/environ`), is the local file we seek to retrieve. This time we will try to retrieve `/home/site/wwwroot/local.settings.json`, which as per [Microsoft](https://learn.microsoft.com/en-us/azure/azure-functions/functions-develop-local#local-settings-file) can contain connection strings and secrets.  
 
-As we did on the AWS version of the blog app, we abuse the `value` GET parameter to achieve an LFI via SSRF:
-![localsettings](/assets/images/azure/local_settings.jpg)  
+![localsettings](/assets/images/azure/local_settings.jpg) 
+
+As we did on the AWS version of the blog app, we abuse the `value` GET parameter to achieve an LFI via SSRF:  
 
 ![ssrf_localsettings_lfi](/assets/images/azure/ssrf_local_settings.jpg)  
 
@@ -107,4 +108,16 @@ We can see that we successfuly escalated our role to `owner` over the entire `az
 
 ![runbook](/assets/images/azure/escalation_success.jpg)  
 
-Now with these
+Having owner-level permissions on a resource group in Azure is highly dangerous and opens up the potential for multiple attacks. With this level of access, an attacker could:
+
+Steal or manipulate sensitive data stored in the resource group, such as personal information or confidential business data.
+
+Modify the configuration of resources within the group, potentially leading to service disruptions or outages.
+
+Use the resource group as a launching pad for further attacks, such as compromising other Azure resources or moving laterally within an organization's network.
+
+Gain access to billing information, potentially allowing for unauthorized charges to be incurred. ( Let's say an attacker has gained owner-level permissions on a resource group containing a virtual machine that is used as a web server for an e-commerce website. From here, the attacker could install malware on the virtual machine, compromising the website and potentially stealing sensitive information from customers. The attacker could also use the virtual machine as a pivot point to launch further attacks on other resources within the organization's Azure environment, or even within the organization's on-premises network.)
+
+Delete critical resources within the group, causing permanent data loss and potentially resulting in costly downtime for the affected organization. (As for number 4, gaining access to billing information can be achieved by accessing the Azure subscription associated with the resource group. With owner-level permissions on the resource group, an attacker would have the ability to view the billing information for the associated Azure subscription, including details on resource usage and costs incurred. The attacker could potentially modify the configuration of resources within the group, increasing usage and driving up the costs associated with the subscription. This could result in unauthorized charges being incurred, potentially causing financial harm to the affected organization.)
+
+In conclusion, it is extremely important for organizations to properly secure their Azure resource groups and monitor for misconfigurations to prevent unauthorized access and minimize the risk of attacks.
