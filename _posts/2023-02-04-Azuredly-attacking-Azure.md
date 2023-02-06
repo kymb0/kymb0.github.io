@@ -28,7 +28,7 @@ Azure means clear sky and NO clouds??? Anyway, let's move on.
 ## Discovering the Application
 
 Once we successfully deploy our environment via terraform, we will have access to the application URL, and navigating here shows a blog website. This is much the same as what we did in [Part 1](https://kymb0.github.io/IAM-attacking-AWS-rn/) where we attacked AWS.  
-**Note: If you are planning on running through this yourself, the easiest way is to use the Azure CLI within the Azure Web console.
+**Note: If you are planning on running through this yourself, the easiest way is to use the Azure CLI within the Azure Web console to deploy with Terraform.**
 
 ![blog_landing_page](/assets/images/azure/blog.jpg)
 
