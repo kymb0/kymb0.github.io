@@ -80,7 +80,7 @@ Taken from: [https://learn.microsoft.com/en-us/azure/role-based-access-control/r
 ![role_assignments](/assets/images/azure/role_assignments.jpg)   
 
 It appears an automation account has owner privileges over the entire azuregoat_app resource group.  
-A brief readthrough on [Microsoft's](https://learn.microsoft.com/en-us/azure/automation/overview#process-automation) knowlwedge page on Automation Accounts concedes the below information:  
+A brief readthrough on [Microsoft's](https://learn.microsoft.com/en-us/azure/automation/overview#process-automation) knowledge page on Automation Accounts concedes the below information:  
 
 ![automation_purpose](/assets/images/azure/automation_account_purpose.jpg) 
 
