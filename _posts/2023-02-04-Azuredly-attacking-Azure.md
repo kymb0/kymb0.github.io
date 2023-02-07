@@ -17,7 +17,7 @@ tags:
 
 ![LeMe_LeAzure](/assets/images/azure/LeAzure.jpg)
 
-For the second part in our attacking cloud series, we will attack [AWSGoat](https://github.com/ine-labs/AzureGoat) which is an intentionally vulnerable Azure lab environment with multiple paths to privilege escalation. I came in here as a noob so this was pretty informative and I hope you glean some new information from this post.     
+For the second part in our attacking cloud series, we will attack [AzureGoat](https://github.com/ine-labs/AzureGoat) which is an intentionally vulnerable Azure lab environment with multiple paths to privilege escalation. I came in here as a noob so this was pretty informative and I hope you glean some new information from this post.     
 
 Just real quick before we get into this: I was looking for some puns to start this blog off with, however, upon looking up the definition of azure, I discovered the below:  
 
