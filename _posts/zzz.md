@@ -4,8 +4,8 @@ title: "Cross Account RDS Access"
 excerpt: "Bridging the AWS Dev and Eng Accounts for Data Access"
 date: 2023-10-12
 header:
-  thumb: /assets/images/aws/cross-account-thumb.jpg
-  teaser: /assets/images/aws/cross-account-teaser.jpg
+  thumb: /assets/images/AWS_cross_account/cross_account_trust.png
+  teaser: /assets/images/AWS_cross_account/cross_account_trust.png
   teaser_home_page: true
   classes: wide
 categories:
@@ -17,7 +17,7 @@ tags:
   - Lambda
 ---
 
-![Cross-Account_Access](/assets/images/AWS_cross_account/cross_account_header.jpg)
+![Cross-Account_Access](/assets/images/AWS_cross_account/cross_account_trust.png)
 
 I know this is not the normal subject matter for my blog - however I was recently faced with an interesting challenge at work, and I identified a few knowledge gaps in AWS regarding RDS and cross account access and thus after a few beers with my [hackin homie](https://onecloudemoji.github.io/) an idea for a blog no one asked for and no one needs was once again incepted.
 
