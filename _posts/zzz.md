@@ -26,8 +26,7 @@ I know this is not the normal subject matter for my blog - however I was recentl
 Basically, one account has a database in Amazon [RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html), and the other account needs to access it via a lambda for marketing information.  
 It sounds like this should be straight forward, however cross-account RDS access in AWS can be tricky due to AWS's built-in security between accounts. The need for cross account access often comes up when you have different AWS accounts for dev and prod or when you need to share database resources between different teams or third-party vendors.
 To enable interactions between RDS instances across AWS accounts, it's necessary to configure specific trust relationships, permissions, and networking routes.
-This setup ensures that cross-account interactions are both controlled and in line with the [principle of least privilege (PoLP)](https://www.digitalguardian.com/blog/what-principle-least-privilege-polp-best-practice-information-security-and-compliance).
-
+This setup ensures that cross-account interactions are both controlled and in line with the [principle of least privilege (PoLP)](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
 
 ## Account Setup
@@ -38,16 +37,10 @@ We start by creating two user accounts, `aws_dev_account` (under account *2974) 
 - **AmazonVPCFullAccess**: Essential for setting up VPC peering to allow connectivity between the two AWS accounts.
 - **IAMFullAccess**: Allows for the creation and management of IAM roles and policies, crucial for setting up cross-account access.
 
-![dev_perms](/assets/images/AWS_cross_account/dev_perms.png)
-
 The second account, `aws_engineering_account`, has the following policies attached:
 
-- **CrossAccountRDSAccessRole_ougoing**: This custom policy, ([created later in this guide](#cross-account-role-creation)), grants scoped permissions to assume the cross-account role, enabling access to a scoped in `aws_dev_account`.
+- **CrossAccountRDSAccessRole_ougoing**: This custom policy, ([created later in this guide](#cross-account-role-creation)), grants scoped permissions to assume the cross-account role, enabling access to a resource in `aws_dev_account`.
 - **AWSLambdaBasicExecutionRole**: Grants basic execution capabilities for Lambda functions, including logging via Amazon CloudWatch Logs, facilitating the data retrieval process.
-
-![engineering_perms](/assets/images/AWS_cross_account/engineering_perms.png)
-
-
 
 ## Cross Account Role Creation:
 
@@ -99,7 +92,21 @@ Now, log in as the admin in `aws_engineering_account`, create a custom policy to
 ![specify_assumerole_perms](/assets/images/AWS_cross_account/specify_assumerole_perms.png)
 
 
-## VPC Peering Setup
+## VPC Peering
+
+### First, WHAT is a VPC?
+
+A [VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) (Virtual Private Cloud) is essentially an isolated section of AWS wherein your AWS infrastructure resides. 
+When you create a new AWS account, AWS automatically sets up a default VPC for you in each region. This default VPC is configured with certain settings to simplify things, such as internet routing, connectivity between other hosts on the VPC etc.
+It does not however communicate between VPCs in other regions and accounts out of the box, and this must be setup manually, the methodology behind how one sets this up is dependent on your use case and potentially org size, etc.
+These methods are below - while these all practically achieve the same thing, it is worth noting that regardless of which one is used, for the purpose of accessing resources in an authorized context, we must still setup up cross-account IAM roles.
+
+[VPC Peering](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-peering.html): Ideal for smaller-scale scenarios where direct, low-latency communication is needed between two VPCs within the same organization, like linking a development VPC with an engineering VPC :smirk:.  
+[AWS Transit Gateway](https://docs.aws.amazon.com/vpc/latest/userguide/extend-tgw.html): Best suited for large organizations with numerous VPCs and complex networking needs, where centralized management and simplified connectivity are crucial.  
+[VPN Connection](https://docs.aws.amazon.com/vpc/latest/userguide/vpn-connections.html): Appropriate for scenarios requiring secure, encrypted connections between a VPC and remote networks, such as connecting a corporate office network to a VPC in AWS.  
+[AWS Direct Connect](https://aws.amazon.com/directconnect/): Recommended for scenarios demanding high-throughput, consistent network performance, or when handling sensitive data, like connecting an on-premises data center to AWS infrastructure.  
+
+### VPC Peering Setup 
 
 Initiate VPC peering by navigating to: `VPC Dashboard` > `Peering Connections` > `Create peering connection` in either account. Fill out the details and select the VPC that your RDS is hosted on. Once done, log into the other account, go to `VPC Dashboard` > `Peering Connections` to accept the connection request. Update the route tables in both accounts to allow traffic flow: `VPC Dashboard` > `Route Tables` > select the route table associated with your requester VPC, and add a route to the peering connection.
 
@@ -108,8 +115,6 @@ Initiate VPC peering by navigating to: `VPC Dashboard` > `Peering Connections` >
 ![vpc_peering_requested](/assets/images/AWS_cross_account/vpc_peering_requested.png)
 
 ![accept_peering_request](/assets/images/AWS_cross_account/accept_peering_request.png)
-
-
 
 
 ## Security Group Configuration
@@ -143,14 +148,14 @@ In `aws_dev_account`, create a secret in AWS Secrets Manager to store the databa
 
 ## Role Assumption and Data Retrieval
 
-As `aws_engineering_account`, assume the cross-account role using the following one-liner:
+In an `ec2` instance (under account *5884) as the `aws_engineering_account` user, assume the cross-account role using the following one-liner:
 
 ```bash
-eval $(aws sts assume-role --role-arn arn:aws:iam::aws_dev_account:role/CrossAccountRDSAccessRole --role-session-name MySession --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' --output text | awk '{print "aws configure set aws_access_key_id "$1"; aws configure set aws_secret_access_key "$2"; aws configure set aws_session_token "$3";"}')
+eval $(aws sts assume-role --role-arn arn:aws:iam::aws_dev_account:role/CrossAccountRDSAccessRole --role-session-name cross-role-assumption --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' --output text | awk '{print "aws configure set aws_access_key_id "$1"; aws configure set aws_secret_access_key "$2"; aws configure set aws_session_token "$3";"}')
 ```
 ![assumerole_evidence](/assets/images/AWS_cross_account/assumerole_evidence.png)
 
-Create and run Python scripts to fetch data from the RDS instance. Below is a script to retrieve vegetables data:
+Create and run Python scripts to fetch data from the RDS instance (we are emulating a [lambda](https://aws.amazon.com/lambda/) by doing this). Below is a script to retrieve vegetables data:
 
 ```import mysql.connector
 import boto3
@@ -211,3 +216,12 @@ if __name__ == "__main__":
 ```
 
 ![lambda success evidence](/assets/images/AWS_cross_account/lambda_success_evidence.png)
+
+As we can see above, we have successfully emulated lambda execution by running this data-retrieval script from a VPC in a separate account from where the database resides. The VPC peering allows our traffic to flow between these segregated VPC's. and our cross-account IAM role allows us to authorise to the secrets manager for the purpose of authenticating to the db.
+
+### Closing Summary
+
+All in all this was a really fun and educational little project - I hope you enjoyed and perhaps some of you may reference this for an actual project, if so please inform me so that I know I am not always simply void-posting these blogs posts :sweat_smile:
+
+
+![Flexin on tha Cloud](/assets/images/AWS_cross_account/cloud_masta.png)
