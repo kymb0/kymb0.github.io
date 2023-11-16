@@ -36,11 +36,13 @@ We start by creating two user accounts, `aws_dev_account` (under account *2974) 
 - **AmazonRDSFullAccess**: Grants full access to Amazon RDS, necessary for managing RDS instances where our data resides.
 - **AmazonVPCFullAccess**: Essential for setting up VPC peering to allow connectivity between the two AWS accounts.
 - **IAMFullAccess**: Allows for the creation and management of IAM roles and policies, crucial for setting up cross-account access.
+- **SecretsManagerReadWrite**: Allows for the creation and management of database secrets in AWS Secrets Manager.
 
 The second account, `aws_engineering_account`, has the following policies attached:
 
 - **CrossAccountRDSAccessRole_ougoing**: This custom policy, ([created later in this guide](#cross-account-role-creation)), grants scoped permissions to assume the cross-account role, enabling access to a resource in `aws_dev_account`.
-- **AWSLambdaBasicExecutionRole**: Grants basic execution capabilities for Lambda functions, including logging via Amazon CloudWatch Logs, facilitating the data retrieval process.
+- **AmazonVPCFullAccess**: Essential for setting up VPC peering to allow connectivity between the two AWS accounts.
+
 
 ## Cross Account Role Creation:
 
