@@ -15,6 +15,7 @@ tags:
   - Cross-Account
   - RDS
   - Lambda
+  - IAM
 ---
 
 ![Cross-Account_Access](/assets/images/AWS_cross_account/cross_account_trust.png)
