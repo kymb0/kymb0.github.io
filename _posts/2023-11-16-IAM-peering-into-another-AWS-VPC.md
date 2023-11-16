@@ -159,7 +159,8 @@ eval $(aws sts assume-role --role-arn arn:aws:iam::aws_dev_account:role/CrossAcc
 
 Create and run Python scripts to fetch data from the RDS instance (we are emulating a [lambda](https://aws.amazon.com/lambda/) by doing this). Below is a script to retrieve vegetables data:
 
-```import mysql.connector
+```
+import mysql.connector
 import boto3
 import json
 import logging
@@ -215,7 +216,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+```  
 
 ![lambda success evidence](/assets/images/AWS_cross_account/lambda_success_evidence.png)
 
