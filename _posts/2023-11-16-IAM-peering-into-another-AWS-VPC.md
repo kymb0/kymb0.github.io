@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Cross Account RDS Access"
-excerpt: "Bridging the AWS Dev and Eng Accounts for Data Access"
+excerpt: "Achieving cross-account database access via VPC peering and IAM"
 date: 2023-10-12
 header:
   thumb: /assets/images/AWS_cross_account/cross_account_trust.png
