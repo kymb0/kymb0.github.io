@@ -32,7 +32,7 @@ Right now however, we will not concern ourselves with implementing Endpoint Dete
 
 ## WHY THO
 
-Well, the idea is to be able to spin up and present bite-sized real world scenarios for the team (and yourself) to "drill", much like a SWAT team drills kicking down doors to taze your grandma after she goes on a killing spree - we will be drilling opening command prompt and running a `.bat` that displays matrix rain 🕶️
+Well, the idea is to be able to spin up and present bite-sized real world scenarios for the team (and yourself) to "drill", much like a SWAT team drills kicking down doors to taze your grandma after she stole a can of beetroot from woolies (AGAIN) - we will be drilling opening command prompt and running a `.bat` that displays matrix rain 🕶️
 
 
 ## LAB01 Environment Description 
