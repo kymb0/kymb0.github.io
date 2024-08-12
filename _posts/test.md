@@ -155,7 +155,7 @@ Participants interact with a simulated corporate intranet that includes both a p
 ### 8. Create Web App
 
    - Install [M.NET Core Hosting Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-aspnetcore-8.0.6-windows-hosting-bundle-installer)
-   - Download https://github.com/kymb0/bucket/blob/main/UmbrellaIntranet.zip and https://github.com/kymb0/bucket/blob/main/DevIntranet.zip and unzip to  inetpub, and unzip
+   - Download https://github.com/kymb0/bucket/blob/main/UmbrellaIntranet.zip and https://github.com/kymb0/bucket/blob/main/DevIntranet.zip and unzip to `C:\inetpub`
    - IIS Manager -> Add an Appication Pool for Intranet and Dev Intranet, slecting the corresponding unzipped folder parenting `wwwroot`, set the host field to reflect the DNS entries we setup for `intranet.umbrellacorp.local` and `dev.env.intranet.umbrellacorp.local`.
 
 Once you unzip and host these, you should be able to navigate to `http://intranet.umbrellacorp.local`!
