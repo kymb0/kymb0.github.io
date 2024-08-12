@@ -160,6 +160,9 @@ Participants interact with a simulated corporate intranet that includes both a p
 
 Once you unzip and host these, you should be able to navigate to `http://intranet.umbrellacorp.local`!
 
+
+## DONE
+
 Ta Da! Now you have your very own vulnerable, repeatable, expandable lab!!
 
 If you want to go a step further and patch this lab, my first suggestions (aside from firing the dev) would be to make `WEB01` a principal allowed to retrieve the gMSA password for `gmsa_db01` and `gmsa_db02`, install the service accounts, and change how our application connects to the DB.
