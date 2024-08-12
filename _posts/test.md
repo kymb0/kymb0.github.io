@@ -187,12 +187,22 @@ Once you unzip and host these, you should be able to navigate to `http://intrane
 
 Ta Da! Now you have your very own vulnerable, repeatable, expandable lab!
 
+## Security Patch Recommendations
+
 If you want to go a step further and patch this lab, here are some initial suggestions:
+
 - **Restrict gMSA Usage**: Make `WEB01` a principal allowed to retrieve the gMSA password for `gmsa_db01` and `gmsa_db02`. This change ensures that only specified servers can use these managed service accounts, adding an extra layer of security.
+  
 - **Install Service Accounts**: Properly install and configure the gMSA on relevant servers. This helps in managing credentials more securely and efficiently.
+
 - **Revise Application Connectivity**: Change how the application connects to the database by implementing more secure connection strategies. For instance, use integrated security instead of storing credentials in plaintext configuration files. This approach leverages the security features of Windows Authentication, reducing the risk associated with exposed credentials.
 
-These steps address the major misconfiguration of storing credentials in plaintext. By implementing these changes, you will enhance the security of your lab while maintaining the ability to use hardcoded configuration strings for other settings. This provides a more secure environment and illustrates why these security practices are crucial.
+- **Restrict `public_db_reader` Access**: Reassess the `public_db_reader` account's access across multiple databases, especially sensitive ones. Restrict this account to have access only to it's namesake.
+
+- **Reevaluate Linked Servers Configuration**: Assess the necessity and security implications of having linked servers between databases with different sensitivity levels. There should be no good reason for a server hosting a db considered secret to be linked with a server hosting public information.
+
+- **Close Web Vulnerabilities on Intranet**: Consider restricting access to the dev intranet, or even better investing in a proper dev. 
+
 
 
 ### Bonus Notes! 👏
