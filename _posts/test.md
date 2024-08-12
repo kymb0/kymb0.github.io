@@ -230,7 +230,7 @@ If we make these changes, what the heck is the gMSA doing under the hood on `WEB
 - **Extracting Sensitive Configuration Data**:
   Retrieve database connection string from `c:\inetpub\DevIntranet\appsettings.json` via an LFI present in the Document Management page in the Dev Intranet. This file, left insecurely accessible, demonstrates a common security oversight involving sensitive data exposure.
 
-### Database Exploration
+### Database Exfiltration
 
 Utilize the exposed database credentials to connect using a legitimate account. Without escalating privileges or performing SQL injection, list linked servers and dump critical database contents. This demonstrates how legitimate access can be leveraged to achieve significant impacts, reflecting the high stakes involved even with standard user permissions.
 
