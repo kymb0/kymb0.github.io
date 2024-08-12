@@ -29,6 +29,11 @@ As this is the first iteration, this lab has been set up to be extremely basic a
 The groundwork we put in here however will be the foundation for future scenarios and we will be modifying it accordingly, becoming a bit more secure and complex as time marches on. 
 Right now however, we will not concern ourselves with implementing Endpoint Detection and Response (EDR) or OS hardening; these will be slowly introduced as these labs evolve each quarter, blending evasion, C2 usage, and scenarios together.
 
+## WHY THO
+
+Well, the idea is to be able to spin up and present bite-sized real world scenarios for the team (and yourself) to "drill", much like a SWAT team drills kicking down doors to taze your grandma after she goes on a killing spree - we will be drilling opening command prompt and running a `.bat` that displays matrix rain 🕶️
+
+
 ## LAB01 Environment Description 
 
 Participants will interact with a simulated corporate intranet that includes both a production and a less-secure development version. This setup mirrors common real-world scenarios where development environments are often less protected or contain outdated configurations that reveal critical vulnerabilities. 
