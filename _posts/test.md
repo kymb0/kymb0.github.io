@@ -244,11 +244,11 @@ GO
 SELECT name FROM db02.master.sys.databases;
 GO
 
-# List tables in the specific database on a linked server
+# List tables in the _5G_enzyme_experimental database on a linked server
 select * from db02._5G_enzyme_experimental.information_schema.tables;
 go
 
-# Query a specific table on a linked server
+# Query the ExperimentalEnzymes table on the db on the linked server
 SELECT * FROM DB02._5G_enzyme_experimental.dbo.ExperimentalEnzymes;
 GO
 ```
