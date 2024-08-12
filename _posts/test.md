@@ -22,7 +22,7 @@ Recently, I was tasked with setting up an internal environment to test and emula
 
 I often take obscure and hair-brained projects such as this for granted, and as someone pointed out that a wider audience may find both the creation of this lab and its compromise beneficial - I decided to document my steps so that you, the reader, may follow along.
 
-As this is the first iteration, this lab has been set up to be extremely basic and we are essentially boiling the potatoes by spinning up the infra, the meat will come later.
+As this is the first iteration, this lab has been set up to be extremely basic and we are essentially boiling the potatoes by spinning up the infra - the meat will come later.
 
 ![Quagmire](/assets/images/lab01/quagmire.jpg)
 
@@ -40,7 +40,7 @@ Participants interact with a simulated corporate intranet that includes both a p
 
 - **Error Message Analysis**: Analyze and leverage information from error messages to guide further exploration and exploitation.
 - **Security Configuration Flaws**: Identify and exploit common security flaws found in development environments that can lead to broader network compromise.
-- **Weaponize Sensitive Data Handling**: Capitalize on the risks associated with the exposure of sensitive configuration data.
+- **Weaponise Sensitive Data Handling**: Capitalise on the risks associated with the exposure of sensitive configuration data.
 - **Effective Use of Legitimate Access**: Understand how to use valid credentials to explore and extract data from networked systems, demonstrating the potential for significant impacts even without privilege escalation.
 
 
