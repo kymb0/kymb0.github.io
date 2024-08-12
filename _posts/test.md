@@ -42,7 +42,7 @@ Well, the idea is to be able to spin up and present bite-sized real world scenar
 
 Participants will interact with a simulated corporate intranet that includes both a production and a less-secure development version. This setup mirrors common real-world scenarios where development environments are often less protected or contain outdated configurations that reveal critical vulnerabilities. 
 
-- **Single-Host Focus**: All actions and exploits are designed to be carried out from a single host, emphasizing the potential for extensive damage even from a limited foothold.
+- **Single-Host Focus**: All attacks are designed to be carried out from a single host, emphasizing the potential for extensive damage even from a limited foothold.
 - **Non-Destructive Tactics**: The lab emphasizes using non-destructive methods to achieve impactful results, highlighting the importance of stealth and precision in professional penetration testing.
 - **Real-World Relevance**: The scenarios are crafted to reflect common security challenges in real corporate environments, focusing on the exploitation of existing privileges and access rather than seeking new vulnerabilities.
 
