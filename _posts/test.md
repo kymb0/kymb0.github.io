@@ -20,7 +20,7 @@ Recently, I was tasked with setting up an internal environment to test and emula
 
 ![Lab Setup](/assets/images/lab01/me_myteam.png)
 
-This has a secondary effect of encapsulating high impact scenarios enabled by humble access levels - I think this is COOL 😎 and I will endeavour to keep this a running theme throuhgout this series. 
+This has a secondary effect of encapsulating high impact scenarios enabled by humble access levels - I think this is COOL 😎 and I will endeavour to keep this a running theme throughout this series. 
 
 As this is the first iteration, this lab has been set up to be extremely basic and we are essentially boiling the potatoes by spinning up the infra - the meat will come later. 
 
