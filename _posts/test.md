@@ -191,11 +191,11 @@ Ta Da! Now you have your very own vulnerable, repeatable, expandable lab!
 
 If you want to go a step further and patch this lab, here are some initial suggestions:
 
-- **Restrict gMSA Usage**: Make `WEB01` a principal allowed to retrieve the gMSA password for `gmsa_db01` and `gmsa_db02`. This change ensures that only specified servers can use these managed service accounts, adding an extra layer of security.
+- **Restrict gMSA Usage**: Make `WEB01` a principal allowed to retrieve the gMSA password for `gmsa_db01` and `gmsa_db02`. 
   
-- **Install Service Accounts**: Properly install and configure the gMSA on relevant servers. This helps in managing credentials more securely and efficiently.
+- **Install Service Accounts**: Install the gMSA on `WEB01`.
 
-- **Revise Application Connectivity**: Change how the application connects to the database by implementing more secure connection strategies. For instance, use integrated security instead of storing credentials in plaintext configuration files. This approach leverages the security features of Windows Authentication, reducing the risk associated with exposed credentials.
+- **Revise Application Connectivity**: Use integrated security instead of storing credentials in `appsettings.json`. This approach leverages the security features of Windows Authentication, reducing the risk associated with exposed credentials.
 
 - **Restrict `public_db_reader` Access**: Reassess the `public_db_reader` account's access across multiple databases, especially sensitive ones. Restrict this account to have access only to it's namesake.
 
