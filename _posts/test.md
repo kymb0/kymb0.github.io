@@ -137,16 +137,20 @@ Participants will interact with a simulated corporate intranet that includes bot
 
 2. **Set gMSA as Service Account**:
    - Configure SQL Server to run under the gMSA on both `DB01` and `DB02`.
-   - Follow these steps on DB01 and DB02:
-     ```
-     # Open SQL Server Configuration Manager
-     # Navigate to SQL Server Services
-     # Right-click on SQL Server service (e.g., SQL Server (SQLEXPRESS))
-     # Select Properties -> Log On tab
-     # Select "This account", click Browse, enter the gMSA account ( `umbrellacorp\gmsa_db01$` for DB01 and `umbrellacorp\gmsa_db02$` for DB02)
-     # Select protocols under SQL Server Network Configuration, Enable TCP/IP, in the properties go to the IP tab and scroll to the bottom, set port as 1433 and restart the service
-     # Select Properties -> Security, change to `SQL Server and Windows Authentication mode`
-     ```
+   - Follow these steps on `DB01` and `DB02`:
+
+     1. Open **SQL Server Configuration Manager**.
+     2. Navigate to **SQL Server Services**.
+     3. Right-click on the **SQL Server service** (e.g., SQL Server (SQLEXPRESS)).
+     4. Select **Properties** -> **Log On** tab.
+     5. Select "This account", click **Browse**, and enter the gMSA account:
+        - `umbrellacorp\gmsa_db01$` for `DB01`
+        - `umbrellacorp\gmsa_db02$` for `DB02`
+     6. Navigate to **SQL Server Network Configuration**.
+     7. Under **Protocols**, enable **TCP/IP**.
+     8. In the **TCP/IP** properties, go to the **IP Addresses** tab, scroll to the bottom, and set the port to `1433`.
+     9. Restart the **SQL Server service**.
+     10. Select **Properties** -> **Security** and change to `SQL Server and Windows Authentication mode`.
 
 ### 7. Creating and configuring database perms and accounts
 
