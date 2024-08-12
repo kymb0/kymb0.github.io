@@ -24,7 +24,8 @@ This has a secondary effect of encapsulating high impact scenarios enabled by hu
 
 As this is the first iteration, this lab has been set up to be extremely basic and we are essentially boiling the potatoes by spinning up the infra - the meat will come later. 
 
-![Quagmire](/assets/images/lab01/quagmire.jpg)
+<img src="https://github.com/kymb0/kymb0.github.io/blob/master/assets/images/lab01/quagmire.jpg" alt="Quagmire" width="300"/>
+
 
 The groundwork we put in here however will be the foundation for future scenarios and we will be modifying it accordingly, becoming a bit more secure and complex as time marches on. 
 Right now however, we will not concern ourselves with implementing Endpoint Detection and Response (EDR) or OS hardening; these will be slowly introduced as these labs evolve each quarter, blending evasion, C2 usage, and scenarios together.
