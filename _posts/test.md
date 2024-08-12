@@ -16,11 +16,11 @@ tags:
 
 ## Red Team Scenario Lab
 
-Recently, I was tasked with setting up an internal environment to test and emulate some red team scenarios and TTPs. My instructions were to create something reproducible, stable, and impactful—without causing any "oops, I bricked it" moments or needing constant admin elevation. Basically, we want a lab that people can play in but doesn’t require you to call IT (me) for a rescue mission.
+Recently, I was tasked with setting up an internal environment to test and emulate some red team scenarios and TTPs. My instructions were to create something reproducible, stable, and impactful—without causing any "oops, I bricked it" moments or needing constant admin elevation. Basically, we want a lab that people can play in but doesn’t require anyone to call IT (me) for a rescue mission.
 
 ![Lab Setup](/assets/images/lab01/me_myteam.png)
 
-I often take obscure and hair-brained projects such as this for granted, and as someone pointed out that a wider audience may find both the creation of this lab and its compromise beneficial - I decided to document my steps so that you, the reader, may follow along.
+This has a secondary effect of encapsulating high impact scenarios which originate from humbe access levels - I think this is COOL 😎 and I will endeavour to keep this a running theme throuhgout this series. 
 
 As this is the first iteration, this lab has been set up to be extremely basic and we are essentially boiling the potatoes by spinning up the infra - the meat will come later.
 
