@@ -171,6 +171,8 @@ Participants will interact with a simulated corporate intranet that includes bot
 
 Once you unzip and host these, you should be able to navigate to `http://intranet.umbrellacorp.local`!
 
+<img src="https://github.com/kymb0/kymb0.github.io/blob/master/assets/images/lab01/Umbrella_intranet.png" alt="Intranet" width="300"/>
+
 
 ## DONE
 
