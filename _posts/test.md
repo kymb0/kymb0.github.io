@@ -22,6 +22,8 @@ Recently, I was tasked with setting up an internal environment to test and emula
 
 This has a secondary effect of encapsulating high impact scenarios enabled by humble access levels - I think this is COOL 😎 and I will endeavour to keep this a running theme throughout this series. 
 
+To keep this fun and engaging (both for the team but also myself) I have opted to use the fictional [Umbrella Corporation](https://residentevil.fandom.com/wiki/Umbrella_Corporation) as our persistent target, and created an internal Intranet and Dev Intranet sites containing vulnerable configurations, scripts to setup characters and groups in our Active Directory inline with the lore, aswell as scripts to create and populate databases with dummydata to reflect the Resident EVil universe - these will all be provided during the steps to create this lab (yes I am a nerd with no life GG)
+
 As this is the first iteration, this lab has been set up to be extremely basic and we are essentially boiling the potatoes by spinning up the infra - the meat will come later. 
 
 <img src="https://github.com/kymb0/kymb0.github.io/blob/master/assets/images/lab01/quagmire.jpg" alt="Quagmire" width="300"/>
@@ -94,7 +96,10 @@ Participants will interact with a simulated corporate intranet that includes bot
    -**Create DNS entries for Intranet Pages**
       - On the domain controller, create an A record for `intranet.umbrellacorp.local` and `dev.env.intranet.umbrellacorp.local` and point them to `WEB01`
 
-2. **Join the Domain**:
+   -**Populate Acitive Directory with lore-friendly nerds**
+      - On the domain controller, run [this](https://github.com/kymb0/bucket/blob/main/create_groups_users.ps1) script that will create security groups and suers which the script will then add the users into
+
+3. **Join the Domain**:
    - On each server (`Client01`, `DB01`, `DB02`, `WEB01`), go to **System Properties** and change the settings to join the `umbrellacorp.local` domain.
    - Restart each VM after joining the domain.
 
@@ -160,7 +165,10 @@ Participants will interact with a simulated corporate intranet that includes bot
 
 ### 7. Creating and configuring database perms and accounts
 
-   - Use the .sql scripts in below repo to create and populate the database, follow the commands in the .md to create the users and assign permissions - if you change the password this will have to be reflected in `appsettings.json` when we unzip our websites. [Link to GitHub](https://github.com/kymb0/bucket/tree/main)
+   - Use the .sql scripts in below repo to create and populate the database, follow the commands in `sql account setup and db link` to create the users and assign permissions - if you change the password this will have to be reflected in `appsettings.json` when we unzip our websites.
+   - [public db setup](https://github.com/kymb0/bucket/blob/main/public_research_setup.sql)
+   - [secret db setup](https://github.com/kymb0/bucket/blob/main/secret_research_setup.sql)
+   - [sql account setup and db link](https://github.com/kymb0/bucket/blob/main/sql_accounts_setup.md)
 
 
 ### 8. Create Web App
