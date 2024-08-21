@@ -48,7 +48,7 @@ Participants will interact with a simulated corporate intranet that includes bot
 
 ## A "Brief" Client "Brief"
 
-Umbrella Corporation have taken over the database infrastructure of a recently acquired pharmaceutical company. The data stored is considered to be highly sensitive, namely the “5G_enzyme_experimental” database. Umbrella have engaged <your_company> to test the resiliency of the MSSQL infrastructure against a threat actor who has internal network access. 
+Umbrella Corporation have taken over the database infrastructure of a recently acquired pharmaceutical company. The data stored is considered to be highly sensitive, namely the “5G_enzyme_experimental” database. Umbrella have engaged _your_company_name_ to test the resiliency of the MSSQL infrastructure against a threat actor who has internal network access. 
 
 ## Demonstrated Skills
 
