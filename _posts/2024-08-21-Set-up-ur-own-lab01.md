@@ -27,7 +27,7 @@ To keep this fun and engaging (both for the team but also myself) I have opted t
 
 As this is the first iteration, this lab has been set up to be extremely basic and we are essentially boiling the potatoes by spinning up the infra - the meat will come later. 
 
-<img src="https://github.com/kymb0/kymb0.github.io/blob/master/assets/images/lab01/quagmire.jpg" alt="Quagmire" width="300"/>
+<img src="/assets/images/lab01/quagmire.jpg" alt="Quagmire" width="300"/>
 
 
 The groundwork we put in here however will be the foundation for future scenarios and we will be modifying it accordingly, becoming a bit more secure and complex as time marches on. 
@@ -187,7 +187,7 @@ Participants will interact with a simulated corporate intranet that includes bot
 
 Once you unzip and host these, you should be able to navigate to `http://intranet.umbrellacorp.local`!
 
-<img src="https://github.com/kymb0/kymb0.github.io/blob/master/assets/images/lab01/Umbrella_intranet.png" alt="Intranet" width="300"/>
+<img src="/assets/images/lab01/Umbrella_intranet.png" alt="Intranet" width="300"/>
 
 
 ## DONE
