@@ -46,6 +46,10 @@ Participants will interact with a simulated corporate intranet that includes bot
 - **Non-Destructive Tactics**: The lab emphasizes using non-destructive methods to achieve impactful results, highlighting the importance of stealth and precision in professional penetration testing.
 - **Real-World Relevance**: The scenarios are crafted to reflect common security challenges in real corporate environments, focusing on the exploitation of existing privileges and access rather than seeking new vulnerabilities.
 
+## A "Brief" Client "Brief"
+
+Umbrella Corporation have taken over the database infrastructure of a recently acquired pharmaceutical company. The data stored is considered to be highly sensitive, namely the “5G_enzyme_experimental” database. Umbrella have engaged <your_company> to test the resiliency of the MSSQL infrastructure against a threat actor who has internal network access. 
+
 ## Demonstrated Skills
 
 - **Error Message Analysis**: Analyze and leverage information from error messages to guide further exploration and exploitation.
