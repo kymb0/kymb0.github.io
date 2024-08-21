@@ -186,7 +186,7 @@ Umbrella Corporation have taken over the database infrastructure of a recently a
 ### 8. Create Web App
 
    - Install [M.NET Core Hosting Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-aspnetcore-8.0.6-windows-hosting-bundle-installer)
-   - Download https://github.com/kymb0/bucket/blob/main/UmbrellaIntranet.zip and https://github.com/kymb0/bucket/blob/main/DevIntranet.zip and unzip to `C:\inetpub`
+   - Download the [prod version](https://github.com/kymb0/bucket/blob/main/UmbrellaIntranet.zip) and the [dev version](https://github.com/kymb0/bucket/blob/main/DevIntranet.zip) of the intranet and unzip to `C:\inetpub`
    - IIS Manager -> Add an Appication Pool for Intranet and Dev Intranet, slecting the corresponding unzipped folder parenting `wwwroot`, set the host field to reflect the DNS entries we setup for `intranet.umbrellacorp.local` and `dev.env.intranet.umbrellacorp.local`.
 
 Once you unzip and host these, you should be able to navigate to `http://intranet.umbrellacorp.local`!
@@ -232,18 +232,23 @@ If we make these changes, what the heck is the gMSA doing under the hood on `WEB
 <details>
   <summary>Click 4 Spoilerz</summary>
 
-- **Initial Reconnaissance**:
+**Initial Reconnaissance**:
+  
   Navigate to the main intranet site. An error message reveals the local filesystem path, providing clues about the server configuration and potential points of exposure.
 
-- **Uncovering the Development Intranet**:
+**Uncovering the Development Intranet**:
   Discover a dev.env subdomain under the report issues page which, when navigated to, leads to a development version of the intranet. This site is intentionally less secure and provides a gateway to explore deeper vulnerabilities.
 
-- **Extracting Sensitive Configuration Data**:
+
+**Extracting Sensitive Configuration Data**:
+
   Retrieve database connection string from `c:\inetpub\DevIntranet\appsettings.json` via an LFI present in the Document Management page in the Dev Intranet. This file, left insecurely accessible, demonstrates a common security oversight involving sensitive data exposure.
 
 ### Database Exfiltration
 
+
 Utilize the exposed database credentials to connect using a legitimate account. Without escalating privileges or performing SQL injection, list linked servers and dump critical database contents. This demonstrates how legitimate access can be leveraged to achieve significant impacts, reflecting the high stakes involved even with standard user permissions.
+
 
 Download `sqlcmd` from [here](https://github.com/microsoft/go-sqlcmd/releases/download/v1.8.0/sqlcmd-windows-amd64.zip).
 
