@@ -19,7 +19,7 @@ tags:
 
 ## Who Am I and Why Am I Doing This
 
-Hello, my name is kymb0 and the universe is now accelerating towards AI adoption at a rate faster than my grandmother can demolish a bottle of cheap champagne. This, in turn, has made me a strange mix of curious, furious, and anxious. I never went to university and all I really know to do is share memes and write blog posts, so I decided to teach myself by doing exactly these two things.
+Hello, my name is kymb0 and the universe is now accelerating towards AI adoption at a rate faster than my grandmother can demolish a bottle of cheap champagne. This, in turn, has made me a strange mix of curious, furious, and anxious. I never went to university and all I really know how to do is share memes and write blog posts, so I decided to teach myself by doing exactly these two things.
 
 Each installation of this series will cover what I am currently learning in the `Fundamentals of AI` Module on the [Hack the Box Academy](https://academy.hackthebox.com).
 
