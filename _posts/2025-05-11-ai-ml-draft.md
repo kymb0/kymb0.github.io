@@ -16,7 +16,6 @@ tags:
 ---
 
 
-# Supernatural Machine Learning: Linear Regression for Hunters
 
 ## Who Am I and Why Am I Doing This
 
@@ -29,8 +28,6 @@ Each installation of this series will cover what I am currently learning in the 
 This entire series will be lore-driven by the tv show [Supernatural](https://en.wikipedia.org/wiki/Supernatural_(American_TV_series)) We will be leveraging Machine Learning to assist [Sam and Dean Winchester](https://supernatural.fandom.com/wiki/Sam_and_Dean) as they hunt down supernatural threats to society.
 This means using real-world ML techniques like regression, classification, and anomaly detection to help them.
 
-![Dads_huntin](/assets/images/ai_ml_1/dadsbnonahuntntriplol.png)
-
 If you are unaware who these guys are or what the **HELL** is going on rn this is all you need to know:  
 
 - A weird sighting or unexplained death happens  
@@ -42,10 +39,6 @@ If you are unaware who these guys are or what the **HELL** is going on rn this i
 - They show up, identify the threat, salt and burn the thing
 
 - One-liners, explosions, pie
-
-![THEBOYS](/assets/images/ai_ml_1/samndean.png)
-
-![Dean_loves_Pie_FYI](/assets/images/ai_ml_1/eat_pie_kill_demon.jpg)
 
 That’s the loop.
 We’re just injecting ML into it to help them move faster, hit harder, and maybe avoid the occasional possession.
@@ -67,7 +60,7 @@ We're going to build small models to demonstrate the fundamentals — not models
 
 Let’s start simple: teaching a machine to draw a straight line through chaos. To do this, we’ll use Linear Regression.
 
-## What is Linear Regression: “Using Data to Predict the Future with Lines”
+## What is Linear Regression?
 
 Regression is conceptually tasked with predicting a numeric outcome. **Linear regression** is a sub-approach that assumes a straight-line relationship between inputs and output.
 
@@ -102,7 +95,7 @@ Meaning, based on our model, we'd predict a supernatural score of 11.
 
 That’s how a prediction happens.
 
-## What is Ordinary Least Squares: “Tuning for Prediction Accuracy”
+## What is Ordinary Least Squares (OLS)?
 
 Once we decide we’re fitting a line, OLS finds the best one by minimizing prediction errors.
 
@@ -130,7 +123,7 @@ Yes — during dataset creation. But those weights were only used to *generate* 
 
 **ISN’T THAT SO COOL!?**
 
-### A Bried Example of How Residual Calculation Works
+### A Brief Example of How Residual Calculation Works
 
 ```
 Say we have the below actual and predicted values:
@@ -151,12 +144,12 @@ We would square the residuals:
 
 Sum of squared errors = 4 + 4 + 4 + 1 = **13**
 
-OLS tries to tune the model (adjust m and c) to make this total error **as small as possible**.
+OLS tries to tune the model, by adjusting the coefficient and intercept calues, to make this total error **as small as possible**.
 ```
 
-## How Can we us this to help Sam and Dean
+## How Can we us this to help Sam and Dean??
 
-Think of it like Bobby's field log — a single source of truth containing multiple data points surrounding previous sightings and engagements. We've taught a machine to take those inputs and estimate how severe the threat is. Bobby spends countless hours researching and studying and is all work no play (IF YOU KNOW WHAT I MEAN), and thus, has decided to join the 21st Century and embrace technology.
+Think of the input data like Bobby's field log — a single source of truth containing multiple data points surrounding previous sightings. We've taught a machine to take those inputs and estimate how severe the threat is. Bobby spends countless hours researching and studying and is all work no play (IF YOU KNOW WHAT I MEAN), and thus, has decided to join the 21st Century and embrace technology.
 
 ![BobbyResearch](/assets/images/ai_ml_1/bobby_research.png)
 
@@ -243,11 +236,11 @@ print("Intercept:", model.intercept_)
 
 When you call `fit(X, y)`, you're telling the model:
 
-- Here are the inputs and their real outputs.
-- Learn the line that best maps inputs to outputs.
-- Do it by minimizing prediction error.
+- Here are the inputs and their real outputs
+- Learn the line that best maps inputs to outputs
+- Do it by minimizing prediction error
 
-Behind the scenes, this is OLS:
+Behind the scenes, this is OLS!!
 
 - Guess some coefficients and an intercept
 - Predict values using those guesses
@@ -259,7 +252,7 @@ Behind the scenes, this is OLS:
 
 ## Visualizing Predictions
 
-With the model now trained and optimised - we can visualise 
+With the model now "trained" - we can visualise what we have done
 
 ```python
 import matplotlib.pyplot as plt
@@ -278,9 +271,10 @@ plt.show()
 ```
 ![visualise](/assets/images/ai_ml_1/linearRegression.png)
 
-- Each dot = one case from the dataset
+- Each blue dot = a single event that was evaluated
 - X-axis = the true supernatural severity (what actually happened)
-- Y-axis = the model’s prediction
+- Y-axis = the model’s prediction (what was guessed to have happened)
+- We see that the trend is strong in terms of most predictions closely following the known outcome (visualised by the dots tightly grouping the red line as it travels)
 
 To see the residuals, we can further run the below:
 
@@ -301,13 +295,19 @@ plt.show()
 
 ![Residuals](/assets/images/ai_ml_1/Residuals.png)
 
-- Dots on the red line = perfect prediction
-- Dots close = good prediction
-- Dots far from the line = model got it wrong
+- Each purple dot = A single prediction
+- X-axis = Y-axis = the model’s prediction (what was guessed to have happened)
+- Y-axis = the value of `actual - (minus) predicted` - the **residual** aka how far off the model was for that prediction
+- We see that the trend is strong in terms of residuals (errors) being scattered, if the residuals weren’t scattered, it would mean the model was consistently over or under-estimating in some regions
+
+
+This chart is how you we would debug our model should we identify issues with predictions such as showing bias.
 
 ## How Could This be Weaponised by an Advesary
 
-This concept is reffered to as "Adversarial Machine Learning" - where someone with bad intentions has access to the inputs which in turn allows them to poison the model, and thus affect whatever occurs upstream as a result of any action taken by virtue of what the model predicts.
+The concept of weaponising input data is reffered to as "Adversarial Machine Learning" - where someone with bad intentions has access to the inputs which in turn allows them to poison the model, and thus affect whatever occurs upstream as a result of any action taken by virtue of what the model predicts.
+
+> If we poison the data, we poison the prediction — and thus, poison the outcome
 
 Example: A group of rival hunters or even a group of demon's tasked with taking out Sam and Dean start visiting locations of sightings they will suspect Sam and Dean will respnd to, and bring with them an Angel Blade to increase their sense of safety before ambushing them, or, deploy false evidence to mislead them into being ill-equiped to deal with whatever threat they would be facing.
 
@@ -319,10 +319,4 @@ So that's Linear Regression and OLS!!
 
 Bobby is very proud of you for getting through this, and hopes to see you in the next installment, where we will cover (put what we will cover next)
 
-![BobbyProud](/assets/images/ai_ml_1/bobby_proud.png)  
-
-
-
-
-
-![lol](/assets/images/ai_ml_1/dadsonahuntntrip.png)
+![BobbyProud](/assets/images/ai_ml_1/bobby_proud.png)
