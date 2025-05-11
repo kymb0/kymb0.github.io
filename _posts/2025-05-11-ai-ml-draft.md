@@ -29,6 +29,8 @@ Each installation of this series will cover what I am currently learning in the 
 This entire series will be lore-driven by the tv show [Supernatural](https://en.wikipedia.org/wiki/Supernatural_(American_TV_series)) We will be leveraging Machine Learning to assist [Sam and Dean Winchester](https://supernatural.fandom.com/wiki/Sam_and_Dean) as they hunt down supernatural threats to society.
 This means using real-world ML techniques like regression, classification, and anomaly detection to help them.
 
+![Dads_huntin](/assets/images/ai_ml_1/dadsbnonahuntntriplol.png)
+
 If you are unaware who these guys are or what the **HELL** is going on rn this is all you need to know:  
 
 - A weird sighting or unexplained death happens  
@@ -40,6 +42,10 @@ If you are unaware who these guys are or what the **HELL** is going on rn this i
 - They show up, identify the threat, salt and burn the thing
 
 - One-liners, explosions, pie
+
+![THEBOYS](/assets/images/ai_ml_1/samndean.png)
+
+![Dean_loves_Pie_FYI](/assets/images/ai_ml_1/eat_pie_kill_demon.jpg)
 
 That’s the loop.
 We’re just injecting ML into it to help them move faster, hit harder, and maybe avoid the occasional possession.
@@ -313,4 +319,10 @@ So that's Linear Regression and OLS!!
 
 Bobby is very proud of you for getting through this, and hopes to see you in the next installment, where we will cover (put what we will cover next)
 
-![BobbyProud](/assets/images/ai_ml_1/bobby_proud.png)
+![BobbyProud](/assets/images/ai_ml_1/bobby_proud.png)  
+
+
+
+
+
+![lol](/assets/images/ai_ml_1/dadsonahuntntrip.png)
