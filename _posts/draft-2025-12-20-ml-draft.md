@@ -19,7 +19,7 @@ tags:
 
 LLM security is receiving increased attention due to both integration cadence and severity of compromise when things go wrong. I decided to put together a two part series that covers what what a modern security stack looks like, as I've been testing a number of enterprise-integrated LLMs recently, with some enlightening findings:
 
-![bc_findings_redacted](/assets/images/llm/bc_findings_redacted.jpg)
+![bc_findings_redacted](/assets/images/llm/bc_findings_redacted.png)
 
 This isn't about asking ChatGPT for a recipe for devilled eggs or how to do a backflip. This is about testing modern LLM implementations deployed within enterprise systems—AI chatbots constrained to specific business functions, wrapped in commercial security layers, and exposed to real users.
 
