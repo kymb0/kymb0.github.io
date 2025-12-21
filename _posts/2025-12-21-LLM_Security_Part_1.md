@@ -22,8 +22,6 @@ In light of this, I decided to put together a two part series that covers what a
 
 ![bc_findings_redacted](/assets/images/llm/bc_findings_redacted.png)
 
-So, here we are with a technical two-part series on attacking LLM implementations.
-
 **What this isn't:**
 - A high-level AI risk overview for executives
 - Copy-paste jailbreaks from Reddit
