@@ -26,4 +26,4 @@ Being musical 🎸
 
 [Bugcrowd](https://bugcrowd.com/kymb0)
 
-[Spearlink]([https://www.linkedin.com/company/spearlink-cyber/](https://spearlinkcyber.com.au)) 
+[Spearlink](https://spearlinkcyber.com.au))
