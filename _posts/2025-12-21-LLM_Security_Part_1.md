@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "LLM Security Part 1: Architecture, What Are You Attacking"
-excerpt: "LLM security is receiving increased attention due to both integration cadence and severity of compromise [when things go wrong](https://www.businessinsider.com/chevrolet-dealer-chatbot-tricked-selling-car-one-dollar-2023-12). This is a two-part technical series on attacking LLM implementations."
+excerpt: "LLM security is receiving increased attention due to both integration cadence and when things go wrong. This is a two-part technical series on attacking LLM implementations."
 date: 2025-12-20
 header:
   thumb: /assets/images/llm/pepe_note_taking.jpg
@@ -17,7 +17,8 @@ tags:
 ---
 
 
-LLM security is receiving increased attention due to both integration cadence and severity of compromise when things go wrong. I decided to put together a two part series that covers what a modern security stack looks like and some attack techniques that have worked for me in the wild, as I've been testing a number of enterprise-integrated LLMs recently, with some enlightening findings:
+LLM security is receiving increased attention due to both integration cadence and [when things go wrong](https://www.businessinsider.com/chevrolet-dealer-chatbot-tricked-selling-car-one-dollar-2023-12).    
+In light of this, I decided to put together a two part series that covers what a modern security stack looks like and some attack techniques that have worked for me in the wild, as I've been testing a number of enterprise-integrated LLMs recently, with some enlightening findings:
 
 ![bc_findings_redacted](/assets/images/llm/bc_findings_redacted.png)
 
