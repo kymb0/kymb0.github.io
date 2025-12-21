@@ -52,7 +52,7 @@ _For background on how prompt injection evolved as a vulnerability class, see Si
 
 Before we explore the layers of defence, we need a primer on what actually happens when you ask the robot a question or have a conversation.
 
-Up first is Transformers
+Up first is _**Transformers**_
 
 ## Section 1: WTF Is a Transformer (I got Claude to teach me this btw, I'm not an authority)
 A transformer is the neural network architecture that powers modern LLMs.
