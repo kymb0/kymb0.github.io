@@ -81,7 +81,7 @@ What literally happens when you ask a question:
 
 Here's where it gets spicy.
 
-This may in fact blow your mind but... there is NO SUCH THING as a "conversation" at the model level. The LLM is stateless, it has NO persistence between calls. What feels like a back-and-forth chat about whether 3i atlas is an alien craft is actually the application layer re-sending the *entire conversation history* with every single request.
+This may in fact blow your mind but... there is NO SUCH THING as a "conversation" at the model level. The LLM is stateless, it has NO persistence between calls. What feels like a back-and-forth chat about whether 3i atlas is an alien craft is actually the application layer re-sending the *entire conversation history* with every single request. Think 50 First Dates.
 
 **Turn 1:** `[system prompt] + [your message]`  
 **Turn 2:** `[system prompt] + [your message] + [assistant response] + [your new message]`  
