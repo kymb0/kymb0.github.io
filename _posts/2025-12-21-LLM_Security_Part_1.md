@@ -321,7 +321,7 @@ The attack surface expands when applications bolt on execution capabilities:
 | Added Layer | Execution Risk | Example |
 |-------------|---------------|---------|
 | Code Interpreter | Sandboxed Python/JS | OpenAI's Code Interpreter, Claude's Artifacts |
-| Function/Tool Calling | App-defined endpoints | `get_weather()`, `send_email()`, `query_database()`, `replenish_milk` |
+| Function/Tool Calling | App-defined endpoints | `get_weather()`, `send_email()`, `query_database()`, `replenish_milk()` |
 | MCP (Model Context Protocol) | Standardized tool integration | Filesystem access, API calls, shell commands |
 | Agentic Frameworks | Multi-step chains | LangChain, AutoGen, CrewAI |
 | Custom API Integrations | Backend triggers | Internal microservices the LLM can invoke |
