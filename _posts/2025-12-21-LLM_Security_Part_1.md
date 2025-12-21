@@ -9,7 +9,7 @@ header:
   teaser_home_page: true
   classes: wide
 categories:
-  - LLM Architecture
+  - LLM Security
 tags:
   - LLM
   - AI
