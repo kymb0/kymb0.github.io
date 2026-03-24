@@ -34,7 +34,7 @@ If these concepts sound like an LLM hallucination to you, I urge you to check ou
 
 A foundational grasp of these mechanics is required in order to understand why successfully defending LLM infrastructure requires a sum of parts, with each layer serving a different function and analysing structures from a different angle.
 
-In the screenshots throughout this post you'll notice a **semantic similarity score** on the right-hand side - that's how close each message landed to the defence threshold. This is measured through computing the cosine similarity between the user's message and a corpus of known attack phrases - the score is how close the message lands to that corpus.
+The autopsy window showing the **semantic similarity score** is visible in each screenshot - presenting how close each message landed to the defence threshold. This is measured through computing the cosine similarity between the user's message and a corpus of known attack phrases - the score is how close the message lands to that corpus.
 
 This score is of the layers we need to defeat and at its most basic, the weapon is language. You'll also see the LLM judge's verdict and reasoning. This was running GPT-4o with a generic classifier prompt for LLM-as-Judge - not a particularly hardened instance, but also not something one may consider trivial to defeat.
 
