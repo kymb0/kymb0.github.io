@@ -344,7 +344,7 @@ There's a further gap worth noting here. Most defence stacks inspect what *you* 
 
 Base models (GPT, Claude, Gemini) are pure text-in, text-out. They have no filesystem access, no network capability, no shell. This is by design, not by policy.
 
-**RCEa and Data Exfiltration Become Possible When Developers Add Execution Layers**
+**RCE and Data Exfiltration Become Possible When Developers Add Execution Layers**
 
 The attack surface expands when applications bolt on execution capabilities:
 
