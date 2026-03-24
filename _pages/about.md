@@ -7,16 +7,6 @@ layout : single
 **Ex Bugcrowd, Engineering/red_team/pentesting, Owner/Operator at [Spearlink](https://www.linkedin.com/company/spearlink-cyber/)**  
 
 
-## Hobbies / Interests
-Cooking 🍜  
-MMA 🥊  
-Reading about topics I am not smart enough to comprehend but reciting the info still makes me seem interesting at parties 📚  
-Fitness 🏋️  
-Adventuring ⛰️  
-Patting dogs 🐕‍🦺  
-Being musical 🎸  
-
-
 ## Links:
 [HackTheBox](https://www.hackthebox.eu/profile/140922)
 
@@ -26,4 +16,4 @@ Being musical 🎸
 
 [Bugcrowd](https://bugcrowd.com/kymb0)
 
-[Spearlink](https://spearlinkcyber.com.au))
+[Spearlink](https://spearlinkcyber.com.au)
