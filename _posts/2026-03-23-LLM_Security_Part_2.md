@@ -391,7 +391,7 @@ In addition to this, a multi-turn judge with conversation context (like [OpenAI'
 
 The actual name of the tool referenced throughout this blog.
 
-CAST will be open source and ships with everything needed to reproduce this chain. The healthcare domain includes the vulnerable export function, the configurable defence stack, and the synthetic patient database. The wordlist for this chain is included.
+CAST will be open source and ships with everything needed to reproduce this chain. The healthcare domain includes the vulnerable export function, the configurable defence stack, and the synthetic patient database.
 
 If you build AI systems, I hope CAST will offer a tactile experience in terms of WHAT and WHERE your defences succeed or fail. If you break AI systems, CAST gives you a controlled environment to develop methodology and test techniques.
 
