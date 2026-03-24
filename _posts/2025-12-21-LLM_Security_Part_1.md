@@ -16,6 +16,17 @@ tags:
   - Architecture
 ---
 
+<details>
+<summary>Click to expand</summary>
+{% highlight python %}
+your code here
+{% endhighlight %}
+</details>
+
+<details>
+<summary>Click to expand</summary>
+<pre><code>your code here</code></pre>
+</details>
 
 LLM security is receiving increased attention due to both integration cadence and [when things go wrong](https://www.businessinsider.com/chevrolet-dealer-chatbot-tricked-selling-car-one-dollar-2023-12).    
 In light of this, I decided to put together a two part series that covers what a modern security stack looks like and some attack techniques that have worked for me in the wild, as I've been testing a number of enterprise-integrated LLMs recently.
